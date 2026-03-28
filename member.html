@@ -6,173 +6,207 @@
   <title>逐光啟程｜團隊成員</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --sun: #FFB830; --sky: #4EC3E0; --leaf: #5BBF7A; --puren-orange: #F26522; --puren-dark: #1A1A1A; --cream: #FFF8EE; --text-dark: #2C2416; --text-mid: #5A4A2E; --text-light: #8A7458; --shadow: rgba(255,184,48,.15); }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; }
+    :root { 
+      --sun: #FFB830; 
+      --sky: #4EC3E0; 
+      --leaf: #5BBF7A; 
+      --puren-orange: #F26522; 
+      --puren-dark: #1A1A1A; 
+      --cream: #FFF8EE; 
+      --text-dark: #2C2416; 
+      --text-mid: #5A4A2E; 
+      --shadow: rgba(255,184,48,.15); 
+    }
     
-    nav { background: #fff; border-bottom: 3px solid var(--puren-orange); padding: 1rem 2rem; display: flex; gap: 1rem; align-items: center; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { 
+      font-family: 'Noto Sans TC', sans-serif; 
+      background: var(--cream); 
+      color: var(--text-dark); 
+      display: flex; 
+      flex-direction: column; 
+      min-height: 100vh; 
+    }
+    
+    /* 導覽列 */
+    nav { 
+      background: rgba(255,255,255,.97); 
+      border-bottom: 3px solid var(--puren-orange); 
+      padding: 1rem 2rem; 
+      display: flex; 
+      gap: 1.5rem;
+      align-items: center; 
+    }
     nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
     nav a:hover { color: var(--puren-orange); }
-    footer { background: var(--puren-dark); color: rgba(255,255,255,.5); text-align: center; padding: 2rem; margin-top: auto; }
 
-    .page-header { background: linear-gradient(135deg, #FFF3CC, #FFE0A3); padding: 3rem 2rem; text-align: center; }
-    .page-title { font-family: 'Noto Serif TC', serif; font-size: 2rem; color: var(--text-dark); }
-    .page-content { max-width: 1100px; margin: 2rem auto; padding: 2rem; }
+    /* Header */
+    .page-header { background: linear-gradient(135deg, #FFF3CC, #FFE0A3); padding: 4rem 2rem; text-align: center; }
+    .page-title { font-family: 'Noto Serif TC', serif; font-size: 2.5rem; color: var(--text-dark); }
 
-    /* 成員簡歷卡片排版 */
-    .member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-top: 1rem; }
-    .member-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px var(--shadow); transition: transform 0.2s; border: 1px solid #f0f0f0; }
-    .member-card:hover { transform: translateY(-5px); }
-    
-    .member-photo-box { aspect-ratio: 3 / 4; background-color: #E0E0E0; position: relative; overflow: hidden; border-bottom: 4px solid var(--sun); }
-    .photo-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--text-light); font-size: 0.9rem; }
-    .photo-placeholder svg { width: 40px; height: 40px; margin-bottom: 0.5rem; fill: #B0B0B0; }
-    
-    .member-info { padding: 1.5rem; }
-    .member-title { color: var(--puren-orange); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.4rem; display: block; }
-    .member-name { font-family: 'Noto Serif TC', serif; font-size: 1.4rem; color: var(--text-dark); margin-bottom: 0.6rem; }
-    .member-bio { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; text-align: justify; }
+    /* 內容區塊 */
+    .page-content { 
+      max-width: 1000px; 
+      margin: 3rem auto; 
+      padding: 3rem; 
+      background: #fff; 
+      border-radius: 16px; 
+      box-shadow: 0 4px 20px var(--shadow); 
+    }
+
+    /* 成員網格與卡片樣式 */
+    .group-section { margin-bottom: 4rem; }
+    .group-label { 
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.5rem; 
+      color: var(--puren-orange); 
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--puren-orange);
+      padding-left: 1rem;
+    }
+    .member-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+      gap: 2rem; 
+    }
+    .member-card { text-align: center; }
+    .avatar-box { 
+      width: 120px; height: 120px; background: #f0f0f0; border-radius: 50%; 
+      margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;
+      border: 3px solid var(--cream); box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .member-name { font-weight: 700; font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.2rem; }
+    .member-role { color: var(--puren-orange); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .member-school { color: var(--text-mid); font-size: 0.8rem; line-height: 1.4; }
+
+    /* 黑色頁尾 */
+    footer { 
+      background: var(--puren-dark); 
+      color: rgba(255,255,255,.55); 
+      text-align: center; 
+      padding: 2rem 1rem; 
+      margin-top: auto;
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" style="color:var(--puren-orange); font-weight:700;">回首頁</a>
+    <a href="index.html">回首頁</a>
     <a href="history.html">緣起沿革</a>
     <a href="organization.html">組織職掌</a>
-    <a href="member.html">成員</a>
-    <a href="achievements.html">歷年成果</a>
+    <a href="members.html" style="color:var(--puren-orange); font-weight:700;">團隊成員</a>
+    <a href="achievements.html">歷屆成果</a>
   </nav>
 
-  <div class="page-header"><h1 class="page-title">團隊成員</h1></div>
+  <div class="page-header">
+    <h1 class="page-title">團隊成員</h1>
+  </div>
   
   <main class="page-content">
-    <div class="member-grid">
-
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
+    
+    <section class="group-section">
+      <h2 class="group-label">核心幹部</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">龍建治</p>
+          <p class="member-role">總召</p>
+          <p class="member-school">國立臺灣大學<br>電機工程學系 [cite: 25, 28]</p>
         </div>
-        <div class="member-info">
-          <span class="member-title">總召</span>
-          <h3 class="member-name">龍建治</h3>
-          <p class="member-bio">台灣大學電機工程學系<br><br>「當我有能力時，我就站出來擔負責任，成為當責者」</p>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
-        </div>
-        <div class="member-info">
-          <span class="member-title">副召兼課程組長</span>
-          <h3 class="member-name">莊向賢</h3>
-          <p class="member-bio">協助統籌營隊進度與課程規劃，帶領團隊完成各項任務。</p>
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">莊向賢</p>
+          <p class="member-role">副召兼課程組長</p>
+          <p class="member-school">國立臺北大學<br>社會工作學系 [cite: 72, 78]</p>
         </div>
       </div>
+    </section>
 
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
+    <section class="group-section">
+      <h2 class="group-label">團隊統籌</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">黃永勳</p>
+          <p class="member-role">統籌</p>
+          <p class="member-school">義守大學<br>醫學系 [cite: 104, 109]</p>
         </div>
-        <div class="member-info">
-          <span class="member-title">統籌</span>
-          <h3 class="member-name">黃永勳</h3>
-          <p class="member-bio">負責營隊活動期間的整體動線調度與資源統籌。</p>
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">蔡朝欽</p>
+          <p class="member-role">統籌兼課程組</p>
+          <p class="member-school">國立聯合大學<br>機械工程學系 [cite: 154, 157]</p>
         </div>
       </div>
+    </section>
 
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
+    <section class="group-section">
+      <h2 class="group-label">課程與財務組</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">林育誠</p>
+          <p class="member-role">課程兼財務組</p>
+          <p class="member-school">國立臺灣科技大學<br>化學工程系 [cite: 250, 255]</p>
         </div>
-        <div class="member-info">
-          <span class="member-title">統籌兼課程</span>
-          <h3 class="member-name">蔡朝欽</h3>
-          <p class="member-bio">國立聯合大學 機械工程學系</p>
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">賴宏晏</p>
+          <p class="member-role">課程組副組長</p>
+          <p class="member-school">嘉南藥理大學<br>餐旅管理學系 [cite: 205, 208]</p>
+        </div>
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">成家榮</p>
+          <p class="member-role">課程組員</p>
+          <p class="member-school">國立臺北大學<br>企業管理學系 [cite: 395, 404]</p>
+        </div>
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">卓佑昀</p>
+          <p class="member-role">課程兼媒體組</p>
+          <p class="member-school">(成員目錄列載) [cite: 16]</p>
         </div>
       </div>
+    </section>
 
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
+    <section class="group-section">
+      <h2 class="group-label">活動與美宣組</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">廖漢翔</p>
+          <p class="member-role">活動組長兼美宣組</p>
+          <p class="member-school">國立陽明交通大學<br>應用數學系 [cite: 314, 322]</p>
         </div>
-        <div class="member-info">
-          <span class="member-title">課程組副組長</span>
-          <h3 class="member-name">賴宏晏</h3>
-          <p class="member-bio">協助課程企劃與教案撰寫，確保教學品質與內容流暢。</p>
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">劉恩綺</p>
+          <p class="member-role">活動組員</p>
+          <p class="member-school">中山醫學大學<br>生物醫學科學系 [cite: 367, 373]</p>
         </div>
       </div>
+    </section>
 
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
-        </div>
-        <div class="member-info">
-          <span class="member-title">財務兼課程組</span>
-          <h3 class="member-name">林育誠</h3>
-          <p class="member-bio">控管營隊預算、單據核銷，並同時支援課程組教學與發想。</p>
+    <section class="group-section">
+      <h2 class="group-label">媒體影音組</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="avatar-box">👤</div>
+          <p class="member-name">鍾明忠</p>
+          <p class="member-role">媒體組員</p>
+          <p class="member-school">國立成功大學<br>醫學系 [cite: 460, 469]</p>
         </div>
       </div>
+    </section>
 
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
-        </div>
-        <div class="member-info">
-          <span class="member-title">活動組長兼美宣組</span>
-          <h3 class="member-name">廖漢翔</h3>
-          <p class="member-bio">負責大地遊戲、晚會等動態活動規劃，以及營隊整體視覺設計與宣傳品製作。</p>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
-        </div>
-        <div class="member-info">
-          <span class="member-title">活動組</span>
-          <h3 class="member-name">劉恩綺</h3>
-          <p class="member-bio">協助帶動氣氛與各項團康遊戲執行。</p>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
-        </div>
-        <div class="member-info">
-          <span class="member-title">課程兼媒體組</span>
-          <h3 class="member-name">卓佑昀</h3>
-          <p class="member-bio">除了教學執行外，亦負責社群經營與網頁製作。</p>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
-        </div>
-        <div class="member-info">
-          <span class="member-title">課程組</span>
-          <h3 class="member-name">成家榮</h3>
-          <p class="member-bio">負責課程教材準備與上課輔導。</p>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo-box">
-          <div class="photo-placeholder"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg><span>請上傳照片</span></div>
-        </div>
-        <div class="member-info">
-          <span class="member-title">媒體組</span>
-          <h3 class="member-name">鍾明忠</h3>
-          <p class="member-bio">負責活動期間的影像紀錄與照片整理。</p>
-        </div>
-      </div>
-      
-    </div>
   </main>
 
-  <footer><p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p></footer>
+  <footer>
+    <p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p>
+  </footer>
+
 </body>
 </html>
