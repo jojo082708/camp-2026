@@ -7,927 +7,494 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --puren-orange: #F26522;
-      --puren-dark: #1A1A1A;
-      --cream: #FFF8EE;
-      --text-dark: #2C2416;
-      --text-mid: #5A4A2E;
-      --card-bg: #FFFFFF;
-      --shadow: rgba(44, 36, 22, 0.08);
-      --blue-accent: #6B8CB8;
-      --blue-light: #E8EFF7;
+      --orange: #F26522;
+      --dark:   #1A1A1A;
+      --cream:  #FFF8EE;
+      --text:   #2C2416;
+      --mid:    #5A4A2E;
+      --blue:   #6B8CB8;
+      --blue-l: #E8EFF7;
+      --white:  #FFFFFF;
+      --shadow: rgba(44,36,22,.10);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
       background: var(--cream);
-      color: var(--text-dark);
+      color: var(--text);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
-      line-height: 1.6;
     }
 
-    /* 導覽列 */
+    /* ── Nav ── */
     nav {
       background: rgba(255,255,255,.97);
-      border-bottom: 3px solid var(--puren-orange);
-      padding: 1rem 2rem;
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      position: sticky; top: 0; z-index: 100;
+      border-bottom: 3px solid var(--orange);
+      padding: .9rem 2rem;
+      display: flex; gap: 1.5rem; align-items: center;
+      position: sticky; top: 0; z-index: 200;
     }
-    nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 1rem; transition: color 0.3s; }
-    nav a:hover { color: var(--puren-orange); }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: .95rem; transition: color .25s; }
+    nav a:hover, nav a.active { color: var(--orange); }
 
-    /* 頁面 Header */
-    .page-header { background: linear-gradient(135deg, #FFF3CC, #FFE0A3); padding: 5rem 2rem; text-align: center; }
-    .page-title { font-family: 'Noto Serif TC', serif; font-size: 3rem; color: var(--text-dark); font-weight: 900; }
-    .page-subtitle { margin-top: 0.8rem; color: var(--text-mid); font-size: 1.1rem; }
-
-    /* 主內容 */
-    .page-content {
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 2rem;
-      flex-grow: 1;
+    /* ── Page header ── */
+    .page-header {
+      background: linear-gradient(135deg, #FFF3CC, #FFE0A3);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
     }
-
-    /* 分組標題 */
-    .group-section { margin-bottom: 6rem; }
-    .group-label {
+    .page-title {
       font-family: 'Noto Serif TC', serif;
-      font-size: 2rem;
-      color: var(--text-dark);
+      font-size: 2.8rem; font-weight: 900;
+      color: var(--text);
+    }
+    .page-sub { margin-top: .6rem; color: var(--mid); font-size: 1rem; }
+
+    /* ── Wrapper ── */
+    .page-content {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+      flex: 1;
+    }
+
+    /* ══════════════════════════════
+       ORG TREE
+    ══════════════════════════════ */
+    .org-section { margin-bottom: 4rem; }
+    .org-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.6rem; font-weight: 900;
+      text-align: center;
       margin-bottom: 3rem;
       position: relative;
-      padding-bottom: 1rem;
     }
-    .group-label::after {
+    .org-title::after {
       content: '';
-      position: absolute; left: 0; bottom: 0;
-      width: 60px; height: 4px;
-      background: var(--puren-orange);
+      display: block;
+      width: 50px; height: 4px;
+      background: var(--orange);
+      margin: .6rem auto 0;
+      border-radius: 2px;
     }
 
-    /* 成員卡片網格 */
-    .member-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2.5rem;
+    .org-tree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* 成員卡片 */
+    /* ── Each row ── */
+    .tree-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    /* ── Vertical line between rows ── */
+    .v-line {
+      width: 2px; height: 40px;
+      background: var(--blue);
+      opacity: .45;
+    }
+
+    /* ── Horizontal branch bar ── */
+    .h-branch {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      height: 40px;
+    }
+    .h-branch::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: var(--hl); right: var(--hr);
+      height: 2px;
+      background: var(--blue);
+      opacity: .45;
+    }
+    .h-branch .drop {
+      position: absolute;
+      width: 2px; top: 0; bottom: 0;
+      background: var(--blue);
+      opacity: .45;
+    }
+
+    /* ── Member card ── */
     .member-card {
-      background: var(--card-bg);
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 8px 28px var(--shadow);
       overflow: hidden;
-      box-shadow: 0 10px 30px var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 210px;
+      flex-shrink: 0;
+      transition: transform .3s, box-shadow .3s;
       display: flex;
       flex-direction: column;
     }
     .member-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(44, 36, 22, 0.15);
+      transform: translateY(-7px);
+      box-shadow: 0 18px 42px rgba(44,36,22,.18);
     }
 
-    /* 卡片頂部：名字＋職位區塊 */
-    .member-header {
-      background: linear-gradient(135deg, var(--blue-accent), #8BAFD4);
-      padding: 1.8rem 1.8rem 1.4rem;
-      color: white;
-      position: relative;
+    /* photo area – # placeholder */
+    .member-photo-wrap {
+      width: 100%; aspect-ratio: 1/1;
+      background: #C8C8C8;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .member-photo-wrap img {
+      width:100%; height:100%;
+      object-fit: cover; object-position: center top;
+      transition: transform .5s;
+    }
+    .member-card:hover .member-photo-wrap img { transform: scale(1.05); }
+
+    .photo-placeholder {
+      color: #888;
+      font-size: 2.5rem;
+      font-weight: 900;
+      font-family: monospace;
+      letter-spacing: -2px;
+      user-select: none;
+    }
+
+    /* card text */
+    .member-info {
+      padding: 1rem 1.1rem 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
     .member-name {
       font-family: 'Noto Serif TC', serif;
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      margin-bottom: 0.3rem;
+      font-size: 1.1rem; font-weight: 900;
+      margin-bottom: .2rem;
     }
-    .member-role {
-      font-size: 0.9rem;
-      font-weight: 500;
-      background: rgba(255,255,255,0.25);
+    .member-role-tag {
       display: inline-block;
-      padding: 0.2rem 0.8rem;
-      border-radius: 20px;
-      letter-spacing: 1px;
-    }
-    .member-motto {
-      margin-top: 0.8rem;
-      font-size: 0.85rem;
-      opacity: 0.9;
-      font-style: italic;
-      line-height: 1.5;
-    }
-
-    /* 卡片內容 */
-    .member-body {
-      padding: 1.5rem 1.8rem 2rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    /* 個人資訊列 */
-    .info-row {
-      display: flex;
-      gap: 0.5rem;
-      align-items: flex-start;
-      font-size: 0.88rem;
-      color: var(--text-mid);
-    }
-    .info-label {
-      background: var(--blue-light);
-      color: var(--blue-accent);
-      font-weight: 700;
-      font-size: 0.78rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      white-space: nowrap;
-      margin-top: 0.1rem;
-    }
-
-    /* 分區塊 */
-    .section-block { }
-    .section-title {
-      font-size: 0.82rem;
-      font-weight: 700;
+      background: var(--orange);
       color: white;
-      background: var(--puren-orange);
-      display: inline-block;
-      padding: 0.2rem 0.7rem;
-      border-radius: 4px;
-      margin-bottom: 0.8rem;
-      letter-spacing: 1px;
+      font-size: .7rem; font-weight: 700;
+      padding: .16rem .55rem;
+      border-radius: 20px;
+      letter-spacing: .5px;
+      margin-bottom: .5rem;
     }
-
-    /* 志工/競賽項目 */
-    .exp-item {
-      margin-bottom: 0.9rem;
-      padding-bottom: 0.9rem;
-      border-bottom: 1px dashed #e8e0d4;
-    }
-    .exp-item:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-    .exp-title {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--text-dark);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .exp-date {
-      font-size: 0.78rem;
-      color: var(--blue-accent);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    .exp-detail {
-      font-size: 0.83rem;
-      color: var(--text-mid);
-      margin-top: 0.3rem;
-      line-height: 1.6;
-    }
-    .exp-detail li {
-      list-style: none;
-      padding-left: 1em;
-      position: relative;
-    }
-    .exp-detail li::before {
-      content: '·';
-      position: absolute;
-      left: 0;
-      color: var(--puren-orange);
-      font-weight: 700;
-    }
-
-    /* 榮譽列表 */
-    .honor-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-    .honor-list li {
-      font-size: 0.83rem;
-      color: var(--text-mid);
-      padding-left: 1.2em;
-      position: relative;
+    .member-school {
+      font-size: .78rem; color: var(--mid);
       line-height: 1.5;
-    }
-    .honor-list li::before {
-      content: '★';
-      position: absolute;
-      left: 0;
-      color: #D4A520;
-      font-size: 0.7rem;
-      top: 0.15em;
+      border-top: 1px solid #ede8df;
+      padding-top: .45rem;
+      margin-top: .35rem;
+      margin-bottom: .5rem;
     }
 
-    /* 頁尾 */
-    footer {
-      background: var(--puren-dark);
-      color: rgba(255,255,255,.55);
-      text-align: center;
-      padding: 2.5rem 1rem;
+    /* motivation toggle – same style as old exp-toggle */
+    .mot-toggle {
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; gap: .35rem;
+      font-size: .75rem; color: var(--orange);
+      font-family: 'Noto Sans TC', sans-serif; font-weight: 700;
+      padding: .4rem 0 0; width: 100%;
       margin-top: auto;
     }
-    footer p { font-size: 0.9rem; letter-spacing: 1px; }
+    .mot-toggle::after { content: '▾'; font-size: .7rem; transition: transform .3s; }
+    .mot-toggle.open::after { transform: rotate(180deg); }
 
-    @media (max-width: 768px) {
-      .page-title { font-size: 2.2rem; }
-      .group-label { font-size: 1.6rem; }
-      .member-grid { gap: 1.5rem; grid-template-columns: 1fr; }
+    .mot-panel { display: none; margin-top: .5rem; }
+    .mot-panel.open { display: block; }
+    .mot-panel p {
+      font-size: .74rem; color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer p { font-size: .88rem; letter-spacing: 1px; }
+
+    @media (max-width: 1200px) {
+      .member-card { width: 180px; }
+      .tree-row { gap: 1rem; }
+    }
+    @media (max-width: 700px) {
+      .tree-row { flex-wrap: wrap; }
+      .member-card { width: 150px; }
+      .h-branch::before { display: none; }
+      .h-branch .drop { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">回首頁</a>
-    <a href="history.html">緣起沿革</a>
-    <a href="organization.html">組織職掌</a>
-    <a href="members.html" style="color:var(--puren-orange); font-weight:700;">團隊成員</a>
-    <a href="achievements.html">歷屆成果</a>
-  </nav>
+<nav>
+  <a href="index.html">回首頁</a>
+  <a href="history.html">緣起沿革</a>
+  <a href="organization.html">組織職掌</a>
+  <a href="members.html" class="active">團隊成員</a>
+  <a href="achievements.html">歷屆成果</a>
+</nav>
 
-  <div class="page-header">
-    <h1 class="page-title">團隊成員</h1>
-    <p class="page-subtitle">點亮微光，逐光啟程 ── 共 12 位夥伴</p>
-  </div>
+<div class="page-header">
+  <h1 class="page-title">Meet Our Volunteer Team</h1>
+  <p class="page-sub">逐光啟程 ── 點亮微光，陪伴孩子前行的 12 位夥伴</p>
+</div>
 
-  <main class="page-content">
+<main class="page-content">
+  <section class="org-section">
+    <h2 class="org-title">組織架構 &amp; 團隊成員</h2>
 
-    <!-- ═══ 核心幹部 ═══ -->
-    <section class="group-section">
-      <h2 class="group-label">核心幹部</h2>
-      <div class="member-grid">
+    <div class="org-tree">
 
-        <!-- 龍建治 -->
+      <!-- ══ ROW 1：總召 ══ -->
+      <div class="tree-row">
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">龍建治</div>
-            <div class="member-role">營隊總召</div>
-            <div class="member-motto">當我有能力時，我就站出來擔負責任，成為當責者</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>台灣大學 電機工程學系</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">台北信望愛教會課輔班數學老師 <span class="exp-date">2025/02 – 現在</span></div>
-                <ul class="exp-detail"><li>每週提供弱勢家庭 2 小時數學課輔</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">台北信望愛教會樂團團長 <span class="exp-date">2025/09 – 現在</span></div>
-                <ul class="exp-detail">
-                  <li>為課輔學生創立，提供探索興趣管道</li>
-                  <li>目前已有 4 次演出經驗</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">雙語海洋環境保育繪本製作與演說 <span class="exp-date">2023 – 2024</span></div>
-                <ul class="exp-detail">
-                  <li>設計適合國小學生的環保繪本</li>
-                  <li>至 2 間國小演說，獲學生高度評價</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">苓洲國小志工老師 <span class="exp-date">2022/09 – 2024/06</span></div>
-                <ul class="exp-detail">
-                  <li>每週六早上陪伴弱勢家庭國小學生</li>
-                  <li>每週設計教案，引導學習</li>
-                </ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">競賽認證</div>
-              <ul class="honor-list">
-                <li>青年百億海外翱翔組錄取</li>
-                <li>高雄市政府「阿公店溪文學獎高中組」優選</li>
-                <li>高雄市數學科展高中組第三名</li>
-                <li>高雄市高中數學組科展團隊合作獎</li>
-                <li>中華數學協會 GMEC 全球數學菁英賽銅獎</li>
-              </ul>
+            <span class="member-role-tag">營隊總召</span>
+            <div class="member-school">台灣大學<br>電機工程學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>曾是弱勢家庭的孩子，因遇見一位願意理解自己的數學老師而改變人生方向。參與教育部交換計畫赴美後，深感偏鄉孩子不只缺資源，更缺眼界。希望透過營隊讓孩子第一次相信「原來我也可以」，踏出追夢的第一步。</p>
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="v-line"></div>
+
+      <!-- ══ ROW 2：副召 + 統籌×2 + 劉恩綺 ══ -->
+      <div class="h-branch" id="hbar2">
+        <div class="drop" id="drop2-0"></div>
+        <div class="drop" id="drop2-1"></div>
+        <div class="drop" id="drop2-2"></div>
+        <div class="drop" id="drop2-3"></div>
+      </div>
+
+      <div class="tree-row" id="row2">
 
         <!-- 莊向賢 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">莊向賢</div>
-            <div class="member-role">副召兼課程組長</div>
-            <div class="member-motto">尋找失落、看顧弱小、慈愛正義、永不放棄；因為我在他人的需要上，看見自己的責任。</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>臺北大學 社會工作學系（中教輔導科師培生）</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">國小端實驗教育團體 禾作式學堂 助教 <span class="exp-date">2024/03 – 2024/07</span></div>
-                <ul class="exp-detail">
-                  <li>學習人本主義教學模式</li>
-                  <li>累積學生 30 位，其中 1/2 為特教生</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">新北市樂慧身心障礙者服務中心 長期志工 <span class="exp-date">2025/09 – 迄今</span></div>
-                <ul class="exp-detail">
-                  <li>每月 4 小時，第一線電訪、撰寫個案紀錄</li>
-                  <li>累計服務 10 位中、重度身障者</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">台北家扶 收出養兒童照顧志工 <span class="exp-date">2025/09</span></div>
-                <ul class="exp-detail"><li>接受創傷知情培訓、第一線陪伴幼兒</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">2025 金華花蓮服務隊 大學生隊輔 <span class="exp-date">2025/07</span></div>
-                <ul class="exp-detail">
-                  <li>服務時數 60 小時，服務學生 70 位</li>
-                  <li>營期會談 5 位國中生並持續追蹤</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">2019 金華花蓮服務隊 國中生志工 <span class="exp-date">2019/07</span></div>
-                <ul class="exp-detail"><li>活動組組長，帶領 26 位部落國小生戲劇、團康</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">臺大魔法天使志工隊 <span class="exp-date">2017 – 2019</span></div>
-                <ul class="exp-detail">
-                  <li>台大兒醫癌症病房服務（創傷知情、陪伴）</li>
-                  <li>失親兒桌遊陪伴（遊戲治療學習）</li>
-                </ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">其他經歷</div>
-              <ul class="honor-list">
-                <li>115 年度新北市各界慶祝青年節籌備委員會 青年籌備委員</li>
-                <li>115 年度國教署第八屆青年諮詢代表 進入三階面試決選</li>
-                <li>114 年度臺北大學學學生會秘書長</li>
-                <li>114 學年度北大師培大腦認知科學 TED 競賽 人氣最高獎</li>
-                <li>114 學年度第二屆欣恩獎助學金 獲獎</li>
-                <li>114 學年度第十九屆點燃愛與希望獎助學金 獲獎</li>
-                <li>2021 – 2024 智多星兒童棋院 圍棋兼職講師</li>
-              </ul>
+            <span class="member-role-tag">副召兼課程組長</span>
+            <div class="member-school">臺北大學<br>社會工作學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>身為社工系與輔導科雙修師資生，曾在黑暗中掙扎卻感受過微光的力量。深刻體悟「減少不平等」不只是政治術語，而是對待每個不同生命的方式。期望以體驗教育與 SEL，將 SDGs 轉化為孩子能觸碰的日常。</p>
             </div>
           </div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- ═══ 團隊統籌 ═══ -->
-    <section class="group-section">
-      <h2 class="group-label">團隊統籌</h2>
-      <div class="member-grid">
-
         <!-- 黃永勳 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">黃永勳</div>
-            <div class="member-role">統籌</div>
-            <div class="member-motto">以無為心，行有為事</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>義守大學 醫學系</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">義大醫療服務隊 隊長 <span class="exp-date">2024/09 – 現在</span></div>
-                <ul class="exp-detail">
-                  <li>累積服務超過 120 位國小學生，服務時數 80 小時，跨越高雄、屏東</li>
-                  <li>暑假營隊學生滿意度達 80%</li>
-                  <li>累積募款超過 16 萬元，協助籌備 2026 金山營隊</li>
-                  <li>具備小型（2 天/18 人）至大型（6 天/49 人）營隊經驗</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">普仁基金會 SDGs 工作坊 組長 <span class="exp-date">2025/02 – 2026/01</span></div>
-                <ul class="exp-detail">
-                  <li>帶領團隊組織兩天醫學相關營隊</li>
-                  <li>成果報告總分為當屆 12 組中第一名</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">普仁 2025 年新生說明會 隊輔 <span class="exp-date">2025/09</span></div>
-                <ul class="exp-detail"><li>講解獎學金規則，帶領團康與破冰遊戲</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">義大醫療服務隊 隊輔兼課程組組員 <span class="exp-date">2024/07</span></div>
-                <ul class="exp-detail">
-                  <li>帶領 40 位學生，設計人體器官課程，寓教於樂</li>
-                </ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">競賽認證</div>
-              <ul class="honor-list">
-                <li>普仁基金會名義赴美兩週留學資格</li>
-                <li>一克拉基金會 台灣優異獎學金</li>
-                <li>鴻海大鯨彩受訪人物（2025/06/26）</li>
-                <li>桃園青年期刊封面人物（刊號 533）</li>
-                <li>群園基金會獎學金 2024 年度代表人物</li>
-                <li>111 年度高中市長獎畢業</li>
-                <li>大學四年獲港都扶輪社、鴻海獎學鯨、慈濟新芽等多項獎學金</li>
-              </ul>
+            <span class="member-role-tag">營隊統籌</span>
+            <div class="member-school">義守大學<br>醫學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>國中時家中變故，幸有班導全力協助才得以翻轉人生。深信「教育是翻轉階級的根本」。在美國一行中認識總召龍建治，被其對教育的熱忱打動，決定以豐富的營隊帶隊經驗加入，希望讓孩子拓展視野、啟發思考。</p>
             </div>
           </div>
         </div>
 
         <!-- 蔡朝欽 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">蔡朝欽</div>
-            <div class="member-role">統籌兼課程組</div>
-            <div class="member-motto">把握住平凡的幸福，守護恆久的微笑 ☺</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>聯合大學 機械工程學系</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">普仁基金會 隊輔 <span class="exp-date">2025/07 – 2025/11</span></div>
-                <ul class="exp-detail">
-                  <li>夏令營隊輔（7/7-7/13），帶領 8 位學員，累積服務 76 小時</li>
-                  <li>新生說明會隊輔（9/13），協助基金會推廣與引導</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">普仁基金會 SDGs 組長 <span class="exp-date">2025/02 – 2025/07</span></div>
-                <ul class="exp-detail">
-                  <li>帶領 4 位組員規劃並執行優質教育與在地文化活動</li>
-                  <li>帶領 25 位國中生製作臺南美食（浮水魚羹麵、白糖粿）</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">后綜高中國中參訪 接待志工 <span class="exp-date">2024/03</span></div>
-                <ul class="exp-detail"><li>接待 120 位國中生，介紹生活科技教室設施及演示實驗操作</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">后綜高中寒假英文營隊 營隊隊長 <span class="exp-date">2024/01</span></div>
-                <ul class="exp-detail">
-                  <li>培訓 6 名小隊輔，指導與外師溝通技巧</li>
-                  <li>與外師合作設計 3 種引導活動，帶領 30 名學生</li>
-                </ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">其他經歷</div>
-              <ul class="honor-list">
-                <li>115 學年度「英國倫敦實習計畫」錄取</li>
-                <li>114 學年度「金融服務業教育獎助學金」獲獎</li>
-                <li>114 學年度「陳永泰公益信託傳善獎助學金」獲獎</li>
-                <li>113 學年度后綜高中「熱心公益獎」和「家長會長獎」獲獎</li>
-                <li>112 學年度臺中市政府補助高中生赴新加坡交流錄取</li>
-              </ul>
+            <span class="member-role-tag">統籌兼課程組</span>
+            <div class="member-school">聯合大學<br>機械工程學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>國小時對學習感到排斥，國中遇到用生活實例教數學的老師而改變態度；高中接觸生活科技後發現學習可以很有趣。希望設計結合手作與程式的課程，讓孩子透過實作體驗，發現學習不只是課本與考試。</p>
             </div>
           </div>
         </div>
 
-      </div>
-    </section>
+        <!-- 劉恩綺（移至第二層） -->
+        <div class="member-card">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
+            <div class="member-name">劉恩綺</div>
+            <span class="member-role-tag">統籌組</span>
+            <div class="member-school">中山醫學大學<br>生物醫學科學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>出生於單親家庭，從小在花蓮後山的自然環境中成長，與偏鄉孩童有著天然的共通點。高中一年的科展研究鍛鍊出極大的耐心與抗壓性。期望以陪伴代替說教，在短短幾天的營隊中帶給孩子充滿安全感且啟發好奇心的溫暖時光。</p>
+            </div>
+          </div>
+        </div>
 
-    <!-- ═══ 課程組 ═══ -->
-    <section class="group-section">
-      <h2 class="group-label">課程組</h2>
-      <div class="member-grid">
+      </div><!-- end row2 -->
+
+      <div class="v-line"></div>
+
+      <!-- horizontal branch for row3 -->
+      <div class="h-branch" id="hbar3">
+        <div class="drop" id="drop3-0"></div>
+        <div class="drop" id="drop3-1"></div>
+        <div class="drop" id="drop3-2"></div>
+        <div class="drop" id="drop3-3"></div>
+        <div class="drop" id="drop3-4"></div>
+        <div class="drop" id="drop3-5"></div>
+        <div class="drop" id="drop3-6"></div>
+      </div>
+
+      <!-- ══ ROW 3：各組員（劉恩綺已移至 row2，其餘留此） ══ -->
+      <div class="tree-row" id="row3">
 
         <!-- 賴宏晏 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">賴宏晏</div>
-            <div class="member-role">課程組副組長</div>
-            <div class="member-motto">沒有做不到只有不願意做</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>嘉南藥理大學 餐旅管理學系</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">社區孩童暑期營隊 隊輔 <span class="exp-date">2024 暑假</span></div>
-                <ul class="exp-detail">
-                  <li>帶社區孩童進行學習活動，認識在地生活與廟宇文化</li>
-                  <li>負責小隊帶領、活動協助、秩序與互動引導</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">雙語海洋環境保育繪本製作與演說 <span class="exp-date">2023 – 2024</span></div>
-                <ul class="exp-detail">
-                  <li>設計適合國小學生的環保繪本</li>
-                  <li>至 2 間國小演說，獲學生高度評價</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">公益義賣活動志工 <span class="exp-date">2024/04 – 06</span></div>
-                <ul class="exp-detail"><li>協助公益義賣，負責物資整理、攤位協助與現場支援</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">社區打掃志工 <span class="exp-date">2024 – 2025</span></div>
-                <ul class="exp-detail"><li>參與社區公共空間清潔與環境維護</li></ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">競賽認證</div>
-              <ul class="honor-list">
-                <li>111 – 113 學年度班級品行優良代表</li>
-                <li>111 – 113 學年度班級熱心服務楷模代表</li>
-                <li>111 – 113 學年度班級模範生</li>
-                <li>111 – 113 學年度學生代表</li>
-                <li>112 – 113 學年度學生會副會長</li>
-                <li>113 年度市長獎</li>
-                <li>中式餐飲證照丙級、飲料調製證照丙級、烘焙蛋糕證照丙級、烘培麵包證照丙級、文書處理證照丙級</li>
-              </ul>
+            <span class="member-role-tag">課程組副組長</span>
+            <div class="member-school">嘉南藥理大學<br>餐旅管理學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>成長過程中曾對自我價值感到懷疑，直到遇見一位願意傾聽的老師才逐漸建立自信。這段經驗讓他深刻體會到陪伴與引導的力量。觀察到許多孩子並非缺乏能力，而是缺少被看見的機會，希望透過活動引導孩子學習合作與表達。</p>
             </div>
           </div>
         </div>
 
-        <!-- 林育誠（課程組） -->
+        <!-- 林育誠 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">林育誠</div>
-            <div class="member-role">課程組</div>
-            <div class="member-motto">用自己走過的路，陪伴每一個正在迷惘的腳步。</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>台灣科大 化學工程系（雙主修電子工程系、輔系財務金融）</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">台北市自閉症家長協會 星兒入國小準備班 <span class="exp-date">2025 暑期</span></div>
-                <ul class="exp-detail"><li>課程志工，協助孩童遵守課堂規範與行為引導</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">中華民國自閉症基金會 新北市準備班 <span class="exp-date">2024 暑期</span></div>
-                <ul class="exp-detail"><li>為自閉症孩童準備小一入學營隊，負責現場支援、教學及陪伴</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">台灣數位有聲書推展學會 <span class="exp-date">2024 – 2025</span></div>
-                <ul class="exp-detail"><li>推廣視障共好支持服務，協助視障學員製作作品</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">台灣視多障協會 北部視障路跑健走 <span class="exp-date">2025 暑期</span></div>
-                <ul class="exp-detail"><li>協助路跑活動視力協助與秩序維護</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">國中技職教育化工群科介紹及試探課程 <span class="exp-date">2022 – 2024</span></div>
-                <ul class="exp-detail"><li>推廣技職教育，負責基礎化學實驗示範與學科解說</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">新北市立職業試探暨體驗教育 福和中心化工課程 <span class="exp-date">2022 – 2024</span></div>
-                <ul class="exp-detail"><li>與松山工農化工科合作，擔任課程助教指導國中小學生</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">中華安得烈慈善協會 食物銀行 <span class="exp-date">2025 – 2026</span></div>
-                <ul class="exp-detail"><li>關懷弱勢家庭孩童，協助食物銀行業務執行與物資整理</li></ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">競賽認證</div>
-              <ul class="honor-list">
-                <li>115 年全國大專院校優秀青年</li>
-                <li>111 學年度全國工業類技藝競賽 化驗職種 金手獎</li>
-                <li>111 學年度臺北市傑出表現市長獎</li>
-                <li>111 年全國專業群科專題競賽 優勝</li>
-                <li>化學乙級、化工乙級、石油化學乙級、鍋爐操作乙級技術士</li>
-                <li>初級塑膠材料應用工程師、證券商業務員資格、理財規劃專業人員</li>
-              </ul>
+            <span class="member-role-tag">課程兼財務組</span>
+            <div class="member-school">台灣科大<br>化學工程系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>求學階段雖成績不錯，卻時常不知如何與人建立關係而感到不自在。這段經歷讓他深知一個溫暖的陪伴對覺得自己被遺忘的孩子有多重要。希望以自身的化工專業與服務熱忱，成為連結知識與學生的橋樑。</p>
             </div>
           </div>
         </div>
 
         <!-- 成家榮 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">成家榮</div>
-            <div class="member-role">課程組</div>
-            <div class="member-motto">一個人可以走得快，但一群人可以走得遠</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>臺北大學 企業管理學系暨社會工作學系（師資培育生）</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">築苗教育冬令營 導師及授課教師 <span class="exp-date">2026/01/26 – 02/13</span></div>
-                <ul class="exp-detail">
-                  <li>班級經營，服務中低年級學生（累積近 50 位，多有 ADHD 學童）</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">肯愛社會服務協會 長期志工 <span class="exp-date">2025 – 迄今</span></div>
-                <ul class="exp-detail">
-                  <li>收出養家庭、憂鬱症對象、生命故事撰寫，累計服務近 50 位</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">中華民國自閉症總會 隊輔 <span class="exp-date">2025/08/11 – 15</span></div>
-                <ul class="exp-detail"><li>大專院校自閉症學生入學準備營，服務近 30 位</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">教育部藝術美感育苗計畫 隊輔 <span class="exp-date">2025/06/24 – 07/28</span></div>
-                <ul class="exp-detail">
-                  <li>全國國小藝術推廣教案設計，入校辦理營隊，服務約 160 位</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">Dream IN 東埔 隊輔 <span class="exp-date">2025/01/29 – 02/01</span></div>
-                <ul class="exp-detail">
-                  <li>偏鄉部落服務，設計情緒認知、自我覺察教案，服務約 35 位</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">臺灣省大專青年服務協會 隊輔 <span class="exp-date">2025/01/21 – 01/24</span></div>
-                <ul class="exp-detail"><li>寒假芳苑救難小英雄閱讀營，服務約 30 位</li></ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">其他經歷</div>
-              <ul class="honor-list">
-                <li>2025 教育部青年發展署 Young 飛全球行動計劃培訓營</li>
-                <li>非現職教師學習扶助師資知能研習認證（數學 18 小時、國文 20 小時）</li>
-                <li>114 期中實習 臺北學生諮商輔導中心南區（仁愛國中駐點）</li>
-                <li>113 暑期實習 台北市立聯合醫院忠孝院區（急診室及加護病房）</li>
-                <li>112 暑期實習 臺北市社會局圓通居（街友）</li>
-                <li>112 – 迄今 景美國中機器人程式設計課輔班</li>
-              </ul>
+            <span class="member-role-tag">課程組</span>
+            <div class="member-school">臺北大學<br>企管暨社工系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>堅信「一個人可以走得快，但一群人可以走得遠」。在向賢邀請下加入，將 SEL 與修復式正義的理念帶入營隊，希望把 SDGs 轉化為孩子能理解與參與的體驗，引導他們在日常中實踐關懷與責任。</p>
             </div>
           </div>
         </div>
-
-      </div>
-    </section>
-
-    <!-- ═══ 財務組 ═══ -->
-    <section class="group-section">
-      <h2 class="group-label">財務兼課程組</h2>
-      <div class="member-grid">
-
-        <!-- 林育誠（財務兼課程） -->
-        <div class="member-card">
-          <div class="member-header">
-            <div class="member-name">林育誠</div>
-            <div class="member-role">課程兼財務組員</div>
-            <div class="member-motto">用自己走過的路，陪伴每一個正在迷惘的腳步。</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>台灣科大 化學工程系（雙主修電子工程系、輔系財務金融）</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">同課程組林育誠</div>
-              <div class="exp-item">
-                <div class="exp-title">詳細經歷</div>
-                <ul class="exp-detail"><li>請參見「課程組」欄位中林育誠完整介紹</li></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══ 活動組 ═══ -->
-    <section class="group-section">
-      <h2 class="group-label">活動組</h2>
-      <div class="member-grid">
 
         <!-- 廖漢翔 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">廖漢翔</div>
-            <div class="member-role">活動組長兼美宣組</div>
-            <div class="member-motto">成長不是改變自己，而是不斷完善自己</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>陽明交通大學 應用數學系</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工 / 活動經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">普仁基金會 夏令營隊 隊輔 <span class="exp-date">2025/07/07 – 13</span></div>
-                <ul class="exp-detail">
-                  <li>設計團體破冰活動與主持</li>
-                  <li>帶領 8 位學員生活管理與活動帶領</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">交大四系迎新 活動組員 <span class="exp-date">2025/04 – 06</span></div>
-                <ul class="exp-detail">
-                  <li>大地遊戲設計、活動計畫書撰寫</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">交大獨立迎新 隊輔組副組長 <span class="exp-date">2025/06 – 09</span></div>
-                <ul class="exp-detail">
-                  <li>營隊氣氛帶動、活動帶領與組員生理照顧</li>
-                  <li>營隊舞蹈教學</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">交大雄友會 返鄉服務隊美宣組 <span class="exp-date">2026/01/25 – 28</span></div>
-                <ul class="exp-detail">
-                  <li>設計活動與課程道具、課程簡報設計</li>
-                  <li>營隊期間陪伴學員、確認學員狀態</li>
-                </ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">工作經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">吳限定律文理補習班 英數理輔導老師</div>
-                <ul class="exp-detail"><li>學生題目指導與解惑、錯題訂正與成果抽驗</li></ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">薈風升大 輔導老師兼竹工帶班老師</div>
-                <ul class="exp-detail">
-                  <li>課程進度設計、班級程度分析、考卷習題設計</li>
-                  <li>官方帳號經營及班級行政管理</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">瑞瑞數學 數學教育顧問</div>
-                <ul class="exp-detail">
-                  <li>學生題目指導、錯題訂正、學生狀況分析及進度安排</li>
-                </ul>
-              </div>
+            <span class="member-role-tag">活動組長兼美宣</span>
+            <div class="member-school">陽明交通大學<br>應用數學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>小時候因家境而感到自卑，卻發現政府提供的弱勢生名額是「天上掉下來的寶藏」，讓他擁有更多學習機會。清楚知道這些資源對偏鄉孩子而言更加稀缺，希望以現在所學和活動經驗，為他們打造獨一無二的營隊。</p>
             </div>
           </div>
         </div>
-
-        <!-- 劉恩綺 -->
-        <div class="member-card">
-          <div class="member-header">
-            <div class="member-name">劉恩綺</div>
-            <div class="member-role">活動組</div>
-            <div class="member-motto">努力成為那位能讓你追尋目標的人物</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>中山醫學大學 生物醫學科學系</div>
-              <div class="info-row"><span class="info-label">居住</span>花蓮縣民意里</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">國中校內服務 <span class="exp-date">2020 – 2022（累計 70 小時）</span></div>
-                <ul class="exp-detail">
-                  <li>校園活動支援與基礎行政協調，擔任志工小組長</li>
-                  <li>學習基礎團隊合作與環境管理</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">高中校內服務專案 <span class="exp-date">2022 – 2025（累計 120 小時）</span></div>
-                <ul class="exp-detail">
-                  <li>持續參與校內大型活動策劃與執行</li>
-                  <li>培養高度責任感，穩定支援團隊運作</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">慈濟中學新生成長營隊 <span class="exp-date">2022</span></div>
-                <ul class="exp-detail">
-                  <li>負責後勤支援與行政業務</li>
-                  <li>帶領轉學生與特殊需求孩子建立自信並融入團隊</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">新生社區蘿蔔季 &amp; 食農教育 <span class="exp-date">2025</span></div>
-                <ul class="exp-detail">
-                  <li>參加彰化縣芳苑鄉食農教育推廣</li>
-                  <li>陪伴國小學童及長輩，參與醫療服務隊</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">普仁基金會 115 學年工作坊 隊輔</div>
-                <ul class="exp-detail">
-                  <li>擔任育成計畫工作坊隊輔，引導學生參與活動討論</li>
-                  <li>負責學員生活常規管理與情緒輔導</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ═══ 媒體組 ═══ -->
-    <section class="group-section">
-      <h2 class="group-label">媒體組</h2>
-      <div class="member-grid">
 
         <!-- 卓佑昀 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">卓佑昀</div>
-            <div class="member-role">課程兼媒體組</div>
-            <div class="member-motto">點亮微光，逐光啟程</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">備註</span>詳細資料待補充</div>
+            <span class="member-role-tag">課程兼媒體組</span>
+            <div class="member-school">陽明交通大學<br>資訊工程學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>曾是縮在角落、不諳社交的孩子，因家境壓力學會隱忍，直到國中遇見一位用恆久耐心拆掉心牆的老師。因為走過那段幽暗，更能察覺營隊中那些眼神藏著防備的孩子。希望以哥哥的身分陪伴沉默的孩子，讓他們知道自己並不孤單。</p>
             </div>
           </div>
         </div>
 
         <!-- 鍾明忠 -->
         <div class="member-card">
-          <div class="member-header">
+          <div class="member-photo-wrap"><div class="photo-placeholder">#</div></div>
+          <div class="member-info">
             <div class="member-name">鍾明忠</div>
-            <div class="member-role">媒體組</div>
-            <div class="member-motto">我們這輩子可能沒辦法成就大事，但我們都能藉由大愛完成許多小事</div>
-          </div>
-          <div class="member-body">
-            <div>
-              <div class="info-row"><span class="info-label">學校</span>成功大學 醫學系</div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">志工經驗</div>
-              <div class="exp-item">
-                <div class="exp-title">成功大學醫學院醫療服務隊 <span class="exp-date">2023 – 至今</span></div>
-                <ul class="exp-detail">
-                  <li>每寒假七股出隊，至七股家訪並探望長者</li>
-                  <li>黑熊醫院 ── 至台南開元國小為學生進行衛教活動</li>
-                  <li>天使心出隊 ── 為身心障礙孩童義診、健檢及衛教知識推廣</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">成功大學慈幼社 <span class="exp-date">2022 – 至今</span></div>
-                <ul class="exp-detail">
-                  <li>育幼出隊 ── 至仁愛之家育幼院提供課輔</li>
-                  <li>樂讀出隊 ── 至偏鄉小學進行科普實驗</li>
-                </ul>
-              </div>
-              <div class="exp-item">
-                <div class="exp-title">青藤學程 社會文化教育發展 <span class="exp-date">2022 – 2025</span></div>
-                <ul class="exp-detail">
-                  <li>走訪台灣新住民，拍攝新住民紀錄片</li>
-                  <li>國際志工 ── 緬甸學生線上課輔</li>
-                </ul>
-              </div>
-            </div>
-            <div class="section-block">
-              <div class="section-title">幹部及課外活動</div>
-              <ul class="honor-list">
-                <li>台灣醫學生聯合會 亞洲醫學生交換計畫 地方總召</li>
-                <li>國立成功大學醫學系系學會 國事部秘書</li>
-                <li>國立成功大學醫學系系學會 美攝部部員</li>
-                <li>馬來西亞 Nexus 國際學校模擬聯合國 副秘書長</li>
-                <li>森那美青少年創新大賽 技術顧問及學員指導</li>
-              </ul>
-            </div>
-            <div class="section-block">
-              <div class="section-title">競賽認證</div>
-              <ul class="honor-list">
-                <li>專利證書「安全座椅之安全警示方法」發明第 I684542 號</li>
-                <li>多益金色證書 985 分</li>
-                <li>廈門大學陳景潤杯數學比賽 特優</li>
-                <li>英國數學基金會（UKMT）數學競賽 金牌</li>
-                <li>英國愛丁堡公爵國際獎（DoE IA）金牌</li>
-                <li>森那美青少年創新大賽全國賽 冠軍</li>
-                <li>大英國協英文作文比賽 銀牌</li>
-              </ul>
+            <span class="member-role-tag">媒體組</span>
+            <div class="member-school">成功大學<br>醫學系</div>
+            <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
+            <div class="mot-panel">
+              <p>每次陪伴和幫助別人時，反而覺得自己獲得更多。在臨床學習中發現，醫療更多是陪伴與理解；若能在孩子年幼時種下對健康的認識，就是一種預防醫學。希望以真誠的態度對待孩子，成為願意認真聽他們說話的大哥哥。</p>
             </div>
           </div>
         </div>
 
-      </div>
-    </section>
+      </div><!-- end row3 -->
 
-  </main>
+    </div><!-- end org-tree -->
+  </section>
+</main>
 
-  <footer>
-    <p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p>
-  </footer>
+<footer>
+  <p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p>
+</footer>
+
+<script>
+  /* ── toggle motivation panel ── */
+  function toggleMot(btn) {
+    btn.classList.toggle('open');
+    btn.nextElementSibling.classList.toggle('open');
+  }
+
+  /* ── draw org-chart connector lines ── */
+  function drawBranch(hbarId, rowId, dropPrefix) {
+    const hbar  = document.getElementById(hbarId);
+    const row   = document.getElementById(rowId);
+    if (!hbar || !row) return;
+
+    const cards = row.querySelectorAll('.member-card');
+    if (cards.length === 0) return;
+
+    const hbarRect = hbar.getBoundingClientRect();
+    const firstRect = cards[0].getBoundingClientRect();
+    const lastRect  = cards[cards.length - 1].getBoundingClientRect();
+
+    const leftPx  = firstRect.left + firstRect.width / 2 - hbarRect.left;
+    const rightPx = hbarRect.right - (lastRect.left + lastRect.width / 2);
+
+    hbar.style.setProperty('--hl', leftPx + 'px');
+    hbar.style.setProperty('--hr', rightPx + 'px');
+
+    cards.forEach((card, i) => {
+      const drop = document.getElementById(dropPrefix + i);
+      if (!drop) return;
+      const cardRect = card.getBoundingClientRect();
+      const centerX  = cardRect.left + cardRect.width / 2 - hbarRect.left;
+      drop.style.left = centerX + 'px';
+    });
+  }
+
+  function drawAll() {
+    drawBranch('hbar2', 'row2', 'drop2-');
+    drawBranch('hbar3', 'row3', 'drop3-');
+  }
+
+  window.addEventListener('load', drawAll);
+  window.addEventListener('resize', drawAll);
+</script>
 
 </body>
 </html>
