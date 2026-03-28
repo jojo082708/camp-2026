@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>逐光啟程｜荳陣來作伙 夏令營</title>
+  <title>逐光啟程｜荳陣來作伙 夏令營 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -11,87 +11,101 @@
       --sky: #4EC3E0;
       --leaf: #5BBF7A;
       --peach: #FF8C69;
+      --puren-orange: #F26522;
+      --puren-dark: #1A1A1A;
       --cream: #FFF8EE;
       --warm-white: #FFFDF7;
       --text-dark: #2C2416;
       --text-mid: #5A4A2E;
       --text-light: #8A7458;
-      --card-bg: #FFFFFF;
-      --shadow: rgba(255, 184, 48, 0.15);
+      --shadow: rgba(255,184,48,.15);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
 
-    body {
-      font-family: 'Noto Sans TC', sans-serif;
-      background: var(--cream);
-      color: var(--text-dark);
-      overflow-x: hidden;
+    /* TOP BAR */
+    .top-bar {
+      background: var(--puren-orange); padding: .3rem 2rem;
+      display: flex; justify-content: flex-end; align-items: center;
+      gap: 1.2rem; font-size: .8rem; color: rgba(255,255,255,.9);
     }
+    .top-bar a { color: rgba(255,255,255,.9); text-decoration: none; }
+    .top-bar a:hover { color: #fff; text-decoration: underline; }
 
-    /* ── Decorative background blobs ── */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -200px; right: -200px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(255,184,48,.18) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ══════════ NAV ══════════ */
+    /* NAV */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,248,238,.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 2px solid rgba(255,184,48,.3);
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,.97); backdrop-filter: blur(8px);
+      border-bottom: 3px solid var(--puren-orange);
       padding: 0 2rem;
       display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
+      height: 72px; box-shadow: 0 2px 12px rgba(0,0,0,.08);
     }
     .nav-logo {
-      font-family: 'Noto Serif TC', serif;
-      font-weight: 900; font-size: 1.1rem;
-      color: var(--peach);
-      display: flex; align-items: center; gap: .5rem;
+      display: flex; align-items: center; gap: .8rem;
+      text-decoration: none; flex-shrink: 0;
     }
-    .nav-logo .sun-icon { font-size: 1.4rem; animation: spin-slow 10s linear infinite; }
-    @keyframes spin-slow { to { transform: rotate(360deg); } }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--text-mid); font-size: .9rem; font-weight: 500;
-      padding: .3rem .5rem; border-radius: 6px;
-      transition: background .2s, color .2s;
+    /* ★ Logo 圖片 — 把 src 換成你自己的圖片路徑 */
+    .nav-logo img { height: 52px; width: auto; object-fit: contain; }
+    .nav-logo-fallback {
+      display: none; flex-direction: column;
     }
-    .nav-links a:hover { background: var(--sun); color: #fff; }
+    .nav-logo-fallback .logo-main {
+      font-family: 'Noto Serif TC', serif; font-weight: 900; font-size: 1rem;
+      color: var(--puren-orange); line-height: 1.2;
+    }
+    .nav-logo-fallback .logo-sub { font-size: .7rem; color: var(--text-light); }
 
-    /* ══════════ HERO ══════════ */
+    .nav-menu { display: flex; list-style: none; gap: 0; height: 72px; }
+    .nav-menu > li { position: relative; display: flex; align-items: center; }
+    .nav-menu > li > a,
+    .nav-menu > li > span {
+      display: flex; align-items: center; gap: .3rem;
+      padding: 0 1rem; height: 100%;
+      text-decoration: none; color: var(--text-dark);
+      font-size: .88rem; font-weight: 500; white-space: nowrap; cursor: pointer;
+      transition: color .2s; border-bottom: 3px solid transparent; margin-bottom: -3px;
+    }
+    .nav-menu > li > a:hover,
+    .nav-menu > li:hover > a,
+    .nav-menu > li:hover > span { color: var(--puren-orange); border-bottom-color: var(--puren-orange); }
+    .caret { font-size: .6rem; transition: transform .2s; }
+    .nav-menu > li:hover > span .caret { transform: rotate(180deg); }
+
+    .dropdown {
+      position: absolute; top: 100%; left: 0;
+      background: #fff; border-top: 3px solid var(--puren-orange);
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      min-width: 160px;
+      opacity: 0; pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity .2s, transform .2s; z-index: 300;
+    }
+    .nav-menu > li:hover .dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .dropdown a {
+      display: block; padding: .7rem 1.2rem;
+      font-size: .85rem; color: var(--text-mid);
+      text-decoration: none; white-space: nowrap;
+      border-left: 3px solid transparent;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .dropdown a:hover { background: #FFF3E8; color: var(--puren-orange); border-left-color: var(--puren-orange); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .5rem; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-dark); border-radius: 2px; }
+
+    /* HERO */
     .hero {
       position: relative; overflow: hidden;
       background: linear-gradient(135deg, #FFF3CC 0%, #FFE0A3 40%, #FFDAB3 100%);
-      padding: 5rem 2rem 4rem;
-      text-align: center;
+      padding: 5.5rem 2rem 4.5rem; text-align: center;
     }
-    .hero-deco {
-      position: absolute; pointer-events: none;
-    }
-    .hero-deco.cloud-l {
-      top: 1.5rem; left: -40px;
-      font-size: 6rem; opacity: .15;
-      animation: float 6s ease-in-out infinite;
-    }
-    .hero-deco.cloud-r {
-      bottom: 1rem; right: -30px;
-      font-size: 8rem; opacity: .12;
-      animation: float 8s ease-in-out infinite reverse;
-    }
-    .hero-deco.star {
-      font-size: 1.6rem; opacity: .5;
-    }
+    .hero-deco { position: absolute; pointer-events: none; }
+    .cloud-l { top: 1.5rem; left: -40px; font-size: 6rem; opacity: .15; animation: float 6s ease-in-out infinite; }
+    .cloud-r { bottom: 1rem; right: -30px; font-size: 8rem; opacity: .12; animation: float 8s ease-in-out infinite reverse; }
+    .star { position: absolute; font-size: 1.6rem; opacity: .5; pointer-events: none; }
     .star-1 { top: 12%; left: 10%; animation: twinkle 3s ease-in-out infinite; }
     .star-2 { top: 25%; right: 12%; animation: twinkle 4s ease-in-out infinite .8s; }
     .star-3 { bottom: 20%; left: 18%; animation: twinkle 3.5s ease-in-out infinite 1.5s; }
@@ -99,143 +113,103 @@
     @keyframes twinkle { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
 
     .hero-badge {
-      display: inline-block;
-      background: var(--leaf); color: #fff;
-      font-size: .8rem; font-weight: 700;
-      padding: .35rem 1.2rem; border-radius: 999px;
-      letter-spacing: .1em;
-      margin-bottom: 1.2rem;
+      display: inline-block; background: var(--puren-orange); color: #fff;
+      font-size: .82rem; font-weight: 700; padding: .35rem 1.3rem;
+      border-radius: 999px; letter-spacing: .08em; margin-bottom: 1.3rem;
       animation: pop-in .6s cubic-bezier(.34,1.56,.64,1) both;
     }
-    @keyframes pop-in {
-      from { opacity: 0; transform: scale(.7); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-
+    @keyframes pop-in { from{opacity:0;transform:scale(.7)} to{opacity:1;transform:scale(1)} }
     .hero h1 {
-      font-family: 'Noto Serif TC', serif;
-      font-weight: 900; font-size: clamp(2.2rem, 6vw, 4rem);
-      color: var(--peach);
-      line-height: 1.2;
+      font-family: 'Noto Serif TC', serif; font-weight: 900;
+      font-size: clamp(2.2rem, 6vw, 4rem); color: var(--peach); line-height: 1.2;
       animation: slide-up .7s .15s cubic-bezier(.34,1.56,.64,1) both;
     }
     .hero h1 span { color: var(--sun); }
     .hero-sub {
-      margin-top: .8rem;
-      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      margin-top: .8rem; font-size: clamp(1rem, 2.5vw, 1.35rem);
       color: var(--text-mid); font-weight: 500;
       animation: slide-up .7s .3s cubic-bezier(.34,1.56,.64,1) both;
     }
-    @keyframes slide-up {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
+    @keyframes slide-up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
     .hero-meta {
-      margin-top: 2rem;
-      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+      margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
       animation: slide-up .7s .45s cubic-bezier(.34,1.56,.64,1) both;
     }
     .meta-chip {
-      background: #fff; border: 2px solid var(--sun);
-      border-radius: 12px; padding: .6rem 1.2rem;
-      display: flex; align-items: center; gap: .5rem;
+      background: #fff; border: 2px solid var(--sun); border-radius: 12px;
+      padding: .6rem 1.2rem; display: flex; align-items: center; gap: .5rem;
       font-size: .9rem; font-weight: 500; color: var(--text-mid);
       box-shadow: 0 4px 12px var(--shadow);
     }
-    .meta-chip .icon { font-size: 1.2rem; }
+    .hero-cta { margin-top: 2.5rem; animation: slide-up .7s .6s cubic-bezier(.34,1.56,.64,1) both; }
+    .btn-primary {
+      display: inline-block; background: var(--puren-orange); color: #fff;
+      font-weight: 700; font-size: 1rem; padding: .85rem 2.5rem;
+      border-radius: 999px; text-decoration: none;
+      box-shadow: 0 6px 20px rgba(242,101,34,.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(242,101,34,.45); }
 
-    /* ══════════ SECTIONS ══════════ */
+    /* SECTIONS */
     section { position: relative; z-index: 1; }
     .section-inner { max-width: 960px; margin: 0 auto; padding: 4rem 1.5rem; }
-
     .section-title {
-      font-family: 'Noto Serif TC', serif;
-      font-weight: 900; font-size: clamp(1.5rem, 3.5vw, 2rem);
-      color: var(--text-dark);
-      display: flex; align-items: center; gap: .7rem;
-      margin-bottom: 2rem;
+      font-family: 'Noto Serif TC', serif; font-weight: 900;
+      font-size: clamp(1.4rem, 3.5vw, 2rem); color: var(--text-dark);
+      display: flex; align-items: center; gap: .7rem; margin-bottom: 2rem;
     }
     .section-title::after {
-      content: '';
-      flex: 1; height: 3px;
-      background: linear-gradient(to right, var(--sun), transparent);
+      content: ''; flex: 1; height: 3px;
+      background: linear-gradient(to right, var(--puren-orange), transparent);
       border-radius: 99px;
     }
-    .section-title .icon { font-size: 1.5rem; }
 
-    /* ── Purpose ── */
+    /* PURPOSE */
     .purpose-section { background: var(--warm-white); }
     .purpose-text {
-      font-size: 1.05rem; line-height: 1.95;
-      color: var(--text-mid);
-      background: #fff;
-      border-left: 5px solid var(--sun);
-      border-radius: 0 16px 16px 0;
-      padding: 1.5rem 2rem;
+      font-size: 1.05rem; line-height: 1.95; color: var(--text-mid);
+      background: #fff; border-left: 5px solid var(--puren-orange);
+      border-radius: 0 16px 16px 0; padding: 1.5rem 2rem;
       box-shadow: 0 4px 20px var(--shadow);
     }
     .purpose-text p + p { margin-top: 1rem; }
 
-    /* ── Schedule ── */
+    /* SCHEDULE */
     .schedule-section { background: var(--cream); }
     .schedule-scroll { overflow-x: auto; }
     .schedule-table {
       width: 100%; border-collapse: separate; border-spacing: 0;
       border-radius: 16px; overflow: hidden;
-      box-shadow: 0 4px 24px var(--shadow);
-      min-width: 620px;
+      box-shadow: 0 4px 24px var(--shadow); min-width: 620px;
     }
-    .schedule-table thead tr {
-      background: linear-gradient(90deg, var(--peach), var(--sun));
-    }
+    .schedule-table thead tr { background: linear-gradient(90deg, var(--puren-orange), var(--sun)); }
     .schedule-table thead th {
       padding: .9rem 1rem; color: #fff;
-      font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: .95rem;
-      text-align: center;
+      font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: .95rem; text-align: center;
     }
     .schedule-table tbody tr:nth-child(odd)  { background: #fff; }
     .schedule-table tbody tr:nth-child(even) { background: #FFF8EE; }
     .schedule-table tbody tr:hover { background: #FFF0D0; transition: background .2s; }
     .schedule-table td {
       padding: .65rem 1rem; font-size: .88rem; color: var(--text-mid);
-      text-align: center; vertical-align: middle;
-      border-bottom: 1px solid rgba(255,184,48,.15);
+      text-align: center; border-bottom: 1px solid rgba(255,184,48,.15);
     }
-    .schedule-table td:first-child { font-weight: 700; color: var(--peach); white-space: nowrap; }
-    .tag-course {
-      display: inline-block;
-      background: #E8F8ED; color: #2E8B57;
-      border-radius: 6px; padding: .1rem .5rem; font-size: .8rem;
-    }
-    .tag-game {
-      display: inline-block;
-      background: #FFF0CC; color: #C87800;
-      border-radius: 6px; padding: .1rem .5rem; font-size: .8rem;
-    }
-    .tag-rest {
-      display: inline-block;
-      background: #E8F0FF; color: #3355AA;
-      border-radius: 6px; padding: .1rem .5rem; font-size: .8rem;
-    }
+    .schedule-table td:first-child { font-weight: 700; color: var(--puren-orange); white-space: nowrap; }
+    .tag-course { display:inline-block; background:#E8F8ED; color:#2E8B57; border-radius:6px; padding:.1rem .5rem; font-size:.8rem; }
+    .tag-game   { display:inline-block; background:#FFF0CC; color:#C87800; border-radius:6px; padding:.1rem .5rem; font-size:.8rem; }
+    .tag-rest   { display:inline-block; background:#E8F0FF; color:#3355AA; border-radius:6px; padding:.1rem .5rem; font-size:.8rem; }
 
-    /* ── Courses ── */
+    /* COURSES */
     .courses-section { background: var(--warm-white); }
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
+    .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
     .course-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 20px var(--shadow);
-      border-top: 5px solid var(--sun);
-      transition: transform .25s, box-shadow .25s;
-      position: relative; overflow: hidden;
+      background: #fff; border-radius: 20px; padding: 1.5rem;
+      box-shadow: 0 4px 20px var(--shadow); border-top: 5px solid var(--sun);
+      transition: transform .25s, box-shadow .25s; position: relative; overflow: hidden;
     }
     .course-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(255,184,48,.25); }
+    .course-card:nth-child(1)  { border-top-color: var(--puren-orange); }
     .course-card:nth-child(2)  { border-top-color: var(--sky); }
     .course-card:nth-child(3)  { border-top-color: var(--leaf); }
     .course-card:nth-child(4)  { border-top-color: var(--peach); }
@@ -244,103 +218,142 @@
     .course-card:nth-child(7)  { border-top-color: var(--sun); }
     .course-card:nth-child(8)  { border-top-color: var(--sky); }
     .course-card:nth-child(9)  { border-top-color: var(--leaf); }
-    .course-card:nth-child(10) { border-top-color: var(--peach); }
-    .course-card:nth-child(11) { border-top-color: #E57373; }
-    .course-number {
-      position: absolute; top: 1rem; right: 1.2rem;
-      font-family: 'Noto Serif TC', serif; font-weight: 900;
-      font-size: 2.5rem; color: rgba(0,0,0,.05); line-height: 1;
-    }
+    .course-card:nth-child(10) { border-top-color: var(--puren-orange); }
+    .course-number { position:absolute; top:1rem; right:1.2rem; font-family:'Noto Serif TC',serif; font-weight:900; font-size:2.5rem; color:rgba(0,0,0,.05); line-height:1; }
     .course-emoji { font-size: 2rem; margin-bottom: .6rem; }
-    .course-card h3 {
-      font-family: 'Noto Serif TC', serif;
-      font-weight: 700; font-size: 1.05rem;
-      color: var(--text-dark); margin-bottom: .6rem;
-    }
-    .course-card p {
-      font-size: .88rem; line-height: 1.75; color: var(--text-light);
-    }
+    .course-card h3 { font-family:'Noto Serif TC',serif; font-weight:700; font-size:1.05rem; color:var(--text-dark); margin-bottom:.6rem; }
+    .course-card p  { font-size:.88rem; line-height:1.75; color:var(--text-light); }
 
-    /* ── Ground games ── */
+    /* GAMES */
     .games-section { background: linear-gradient(135deg, #E8F8ED 0%, #D4F0FF 100%); }
-    .games-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.5rem; }
     .game-card {
       background: #fff; border-radius: 20px; padding: 1.5rem;
       box-shadow: 0 4px 20px rgba(78,195,224,.15);
-      border-left: 5px solid var(--sky);
-      transition: transform .25s;
+      border-left: 5px solid var(--sky); transition: transform .25s;
     }
     .game-card:nth-child(2) { border-left-color: var(--sun); }
     .game-card:nth-child(3) { border-left-color: var(--leaf); }
     .game-card:hover { transform: translateY(-5px); }
-    .game-card .game-emoji { font-size: 2.2rem; margin-bottom: .6rem; }
-    .game-card h3 {
-      font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 1.05rem;
-      color: var(--text-dark); margin-bottom: .6rem;
-    }
-    .game-card p { font-size: .88rem; line-height: 1.75; color: var(--text-light); }
-    .game-bullets { margin-top: .8rem; list-style: none; }
-    .game-bullets li {
-      font-size: .83rem; color: var(--text-mid); padding: .2rem 0;
-      display: flex; align-items: flex-start; gap: .4rem;
-    }
-    .game-bullets li::before { content: '▸'; color: var(--sky); flex-shrink: 0; }
+    .game-emoji { font-size: 2.2rem; margin-bottom: .6rem; }
+    .game-card h3 { font-family:'Noto Serif TC',serif; font-weight:700; font-size:1.05rem; color:var(--text-dark); margin-bottom:.6rem; }
+    .game-card p  { font-size:.88rem; line-height:1.75; color:var(--text-light); }
+    .game-bullets { margin-top:.8rem; list-style:none; }
+    .game-bullets li { font-size:.83rem; color:var(--text-mid); padding:.2rem 0; display:flex; align-items:flex-start; gap:.4rem; }
+    .game-bullets li::before { content:'▸'; color:var(--sky); flex-shrink:0; }
 
-    /* ── Info box ── */
+    /* OUTCOMES */
+    .outcomes-section { background: var(--warm-white); }
+    .outcomes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .outcome-box { background: #fff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 16px var(--shadow); }
+    .outcome-box h3 { font-family:'Noto Serif TC',serif; font-weight:700; font-size:1rem; color:var(--puren-orange); margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
+    .outcome-box ul { list-style: none; }
+    .outcome-box ul li { font-size:.88rem; color:var(--text-mid); padding:.35rem 0; display:flex; gap:.5rem; align-items:flex-start; border-bottom:1px dashed rgba(0,0,0,.06); }
+    .outcome-box ul li:last-child { border-bottom: none; }
+    .outcome-box ul li::before { content:'✓'; color:var(--leaf); font-weight:700; flex-shrink:0; }
+
+    /* INFO */
     .info-section { background: var(--cream); }
-    .info-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.2rem;
-    }
-    .info-card {
-      background: #fff; border-radius: 16px; padding: 1.2rem 1.5rem;
-      box-shadow: 0 4px 16px var(--shadow);
-      display: flex; flex-direction: column; gap: .3rem;
-    }
-    .info-card .info-label {
-      font-size: .78rem; font-weight: 700; letter-spacing: .08em;
-      color: var(--peach); text-transform: uppercase;
-    }
-    .info-card .info-value { font-size: .95rem; color: var(--text-dark); font-weight: 500; }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 1.2rem; }
+    .info-card { background:#fff; border-radius:16px; padding:1.2rem 1.5rem; box-shadow:0 4px 16px var(--shadow); display:flex; flex-direction:column; gap:.3rem; }
+    .info-label { font-size:.78rem; font-weight:700; letter-spacing:.08em; color:var(--puren-orange); }
+    .info-value { font-size:.95rem; color:var(--text-dark); font-weight:500; }
+    .info-value small { color:var(--text-light); display:block; font-size:.8rem; font-weight:400; margin-top:.1rem; }
 
-    /* ══════════ FOOTER ══════════ */
-    footer {
-      background: var(--text-dark); color: rgba(255,255,255,.6);
-      text-align: center; padding: 2rem 1rem; font-size: .85rem;
-    }
-    footer strong { color: var(--sun); }
+    /* FOOTER */
+    footer { background:var(--puren-dark); color:rgba(255,255,255,.55); text-align:center; padding:2.5rem 1rem 2rem; font-size:.85rem; }
+    footer strong { color: var(--puren-orange); }
+    .footer-top { margin-bottom: 1.2rem; display:flex; justify-content:center; align-items:center; gap:.8rem; }
+    .footer-top img { height:44px; filter:brightness(0) invert(1); opacity:.6; }
+    .footer-divider { border:none; border-top:1px solid rgba(255,255,255,.1); margin:1.2rem auto; max-width:400px; }
 
-    /* ══════════ SCROLL REVEAL ══════════ */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
 
-    /* ══════════ RESPONSIVE ══════════ */
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .hero { padding: 3.5rem 1.2rem 3rem; }
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .hamburger { display: flex; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .top-bar { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 3rem 1.2rem 2.5rem; }
     }
   </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="https://www.you-care.org.tw/" target="_blank">普仁基金會官網</a>
+  <span>|</span>
+  <span>📞 0963-760-392（總召）</span>
+</div>
+
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <span class="sun-icon">☀️</span>
-    逐光啟程｜荳陣來作伙
+  <!--
+    ★ 換 Logo 方法：
+      方法 A：把下面 <img> 的 src 改成你自己 Logo 的 URL（建議直鏈 .png）
+      方法 B：把 Logo 圖片上傳到同一個 GitHub repo，src 改成相對路徑，例如 src="logo.png"
+  -->
+  <a href="#" class="nav-logo">
+    <img
+      src="YOUR_LOGO_URL_HERE.png"
+      alt="普仁青年關懷基金會"
+      onerror="this.style.display='none'; document.querySelector('.nav-logo-fallback').style.display='flex';"
+    />
+    <div class="nav-logo-fallback">
+      <span class="logo-main">逐光啟程｜荳陣來作伙</span>
+      <span class="logo-sub">普仁青年關懷基金會 SDGs 計劃</span>
+    </div>
+  </a>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
-  <ul class="nav-links">
-    <li><a href="#purpose">活動目的</a></li>
-    <li><a href="#schedule">活動流程</a></li>
-    <li><a href="#courses">課程內容</a></li>
-    <li><a href="#games">大地遊戲</a></li>
-    <li><a href="#info">活動資訊</a></li>
+
+  <ul class="nav-menu" id="navMenu">
+    <li>
+      <span>與我聯絡 <span class="caret">▾</span></span>
+          <span>關於我們 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="https://www.you-care.org.tw/OnePage.aspx?mid=36" target="_blank">緣起沿革</a>
+        <a href="https://www.you-care.org.tw/OnePage.aspx?mid=37" target="_blank">組織職掌</a>
+        <a href="https://www.you-care.org.tw/OnePage.aspx?mid=38" target="_blank">成員</a>
+        <a href="https://www.you-care.org.tw/List.aspx?mid=39" target="_blank">歷年成果</a>
+      </div>
+    </li>
+          <div class="dropdown">
+        <a href="https://www.you-care.org.tw/List.aspx?mid=34" target="_blank">最新消息</a>
+        <a href="https://www.you-care.org.tw/List.aspx?mid=110" target="_blank">LINE線上客服</a>
+        <a href="https://www.you-care.org.tw/List.aspx?mid=80" target="_blank">聯絡我們</a>
+        <a href="https://www.you-care.org.tw/List.aspx?mid=32" target="_blank">常見問題</a>
+      </div>
+    <li>
+
+    </li>
+    <li>
+      <span>本次營隊 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="#purpose">活動目的</a>
+        <a href="#schedule">活動流程</a>
+        <a href="#courses">課程內容</a>
+        <a href="#games">大地遊戲</a>
+        <a href="#outcomes">預期成果</a>
+      </div>
+    </li>
+    <li>
+      <span>支持我們 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="https://www.you-care.org.tw/OnePage.aspx?mid=65" target="_blank">捐款方式</a>
+        <a href="https://www.you-care.org.tw/Online/Index.aspx" target="_blank">線上捐款</a>
+        <a href="https://www.you-care.org.tw/OnePage.aspx?mid=67" target="_blank">捐贈發票</a>
+      </div>
+    </li>
+    <li><a href="#info">精彩花絮</a></li>
   </ul>
 </nav>
 
@@ -348,25 +361,26 @@
 <section class="hero">
   <span class="hero-deco cloud-l">☁️</span>
   <span class="hero-deco cloud-r">☁️</span>
-  <span class="hero-deco star star-1">✦</span>
-  <span class="hero-deco star star-2">✦</span>
-  <span class="hero-deco star star-3">✦</span>
-
+  <span class="star star-1">✦</span>
+  <span class="star star-2">✦</span>
+  <span class="star star-3">✦</span>
   <div class="hero-badge">財團法人普仁青年關懷基金會 × SDGs 計劃</div>
   <h1>逐光啟程<br/><span>荳陣來作伙</span></h1>
   <p class="hero-sub">2026 夏令營活動企劃書</p>
-
   <div class="hero-meta">
-    <div class="meta-chip"><span class="icon">📅</span> 2026 年 7 月 28 日 – 7 月 31 日</div>
-    <div class="meta-chip"><span class="icon">📍</span> 台南文正國小</div>
-    <div class="meta-chip"><span class="icon">👧</span> 學員 25 位 ＋ 工作人員 15 位</div>
+    <div class="meta-chip">📅 2026 年 7 月 28 日 – 7 月 31 日</div>
+    <div class="meta-chip">📍 台南文正國小</div>
+    <div class="meta-chip">👧 學員 25 位 ＋ 工作人員 15 位</div>
+  </div>
+  <div class="hero-cta">
+    <a href="#purpose" class="btn-primary">了解活動詳情 ↓</a>
   </div>
 </section>
 
 <!-- PURPOSE -->
 <section class="purpose-section" id="purpose">
   <div class="section-inner">
-    <h2 class="section-title reveal"><span class="icon">🌱</span>活動目的</h2>
+    <h2 class="section-title reveal">🌱 活動目的</h2>
     <div class="purpose-text reveal">
       <p>我們都是受基金會幫助、曾經歷過黑暗的孩子，因一點微弱的光亮而改變生命。受世界善意與養分灌溉茁壯成長的我們，願意成為那束光，點亮其他孩子、回饋社會，這也是我們舉辦這個營隊的初衷。</p>
       <p>我們希望透過本次營隊，讓弱勢與偏鄉的孩子不只是短暫接觸多元領域的課程，而是在學習與體驗的過程中，逐步拓展對世界的想像與理解。我們深知，一次營隊或許無法對孩子有立即性的改變，但可以成為一個重要的起點。</p>
@@ -378,16 +392,12 @@
 <!-- SCHEDULE -->
 <section class="schedule-section" id="schedule">
   <div class="section-inner">
-    <h2 class="section-title reveal"><span class="icon">🗓️</span>活動流程（2026/07/28–07/31）</h2>
+    <h2 class="section-title reveal">🗓️ 活動流程（2026/07/28–07/31）</h2>
     <div class="schedule-scroll reveal">
       <table class="schedule-table">
         <thead>
           <tr>
-            <th>時間</th>
-            <th>07/28 (二)</th>
-            <th>07/29 (三)</th>
-            <th>07/30 (四)</th>
-            <th>07/31 (五)</th>
+            <th>時間</th><th>07/28（二）</th><th>07/29（三）</th><th>07/30（四）</th><th>07/31（五）</th>
           </tr>
         </thead>
         <tbody>
@@ -420,115 +430,57 @@
 <!-- COURSES -->
 <section class="courses-section" id="courses">
   <div class="section-inner">
-    <h2 class="section-title reveal"><span class="icon">📚</span>課程內容</h2>
+    <h2 class="section-title reveal">📚 課程內容</h2>
     <div class="courses-grid">
-
-      <div class="course-card reveal">
-        <div class="course-number">01</div>
-        <div class="course-emoji">🦕</div>
-        <h3>體驗教育──酷斯拉</h3>
-        <p>透過「酷斯拉」體驗教育引導學員成長，看見「我與他人的不同」；最後實踐「觀點取替」，培養同理心以達成團隊平衡。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">02</div>
-        <div class="course-emoji">👁️</div>
-        <h3>聽見校園的聲音</h3>
-        <p>一人戴上眼罩扮演視障者，另一人擔任引導者，共同漫步於校園。透過互動練習人際溝通與安全感的建立，提升社交覺察能力。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">03</div>
-        <div class="course-emoji">📖</div>
-        <h3>繪本時間</h3>
-        <p>老師先請學生畫下自己的夢想並簡短分享後，開始講繪本。課程中邀請學生關注角色反應並發言，故事結束後引導學生反思，由老師作結。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">04</div>
-        <div class="course-emoji">🎨</div>
-        <h3>我的夢想</h3>
-        <p>老師請學生利用回收材料、樹葉等校園材料，教導多種創作方式，製作屬於自己的「夢想藍圖」。完成後上台與大家分享，訓練學生的創意與表達能力。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">05</div>
-        <div class="course-emoji">🐦</div>
-        <h3>平衡鳥與張力結構之戰</h3>
-        <p>透過提問與「張力結構」範本引出力的概念，引導學生製作出屬於自己的「平衡鳥」，最後各組競賽，看哪一隊的平衡鳥能最快穩定。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">06</div>
-        <div class="course-emoji">🎵</div>
-        <h3>自製拇指琴（Kalimba）</h3>
-        <p>學員親手組裝木盒、鋼片等零件，完成後即時撥奏出聲，透過強烈的成就感引發對聲音科學（振動、頻率、共鳴盒原理）的好奇心與學習動力。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">07</div>
-        <div class="course-emoji">📷</div>
-        <h3>回憶相簿</h3>
-        <p>為營隊之總結與收尾，旨在引導學員將感性經驗轉化為具象記憶。透過個人化的紀錄與製作，賦予活動獨特的個人價值，延伸學習效益。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">08</div>
-        <div class="course-emoji">🫧</div>
-        <h3>泡泡畫</h3>
-        <p>學生透過自己調製的泡泡水創作色彩繽紛的泡泡畫，在了解「表面張力」概念的同時，結合藝術創作，留下這一刻的珍貴體驗。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">09</div>
-        <div class="course-emoji">🧴</div>
-        <h3>泡泡魔法師──肥皂與清潔劑</h3>
-        <p>學員化身「泡泡魔法師」，認識界面活性劑半親水、半親油的特殊構造，親手調製固體肥皂與液態洗碗精，並進行「硬水戰役」與「水上漂浮戰」。</p>
-      </div>
-
-      <div class="course-card reveal">
-        <div class="course-number">10</div>
-        <div class="course-emoji">🔵</div>
-        <h3>捕捉微光的魔法──藍印術</h3>
-        <p>孩子們親眼見證「魔法藥水」的奇幻轉身──原本平淡的黃綠色紙張，在陽光或紫外燈的照射下幻化成深邃的普魯士藍，體驗傳統「晒圖」技術。</p>
-      </div>
-
+      <div class="course-card reveal"><div class="course-number">01</div><div class="course-emoji">🦕</div><h3>體驗教育──酷斯拉</h3><p>透過「酷斯拉」體驗教育引導學員成長，看見「我與他人的不同」；最後實踐「觀點取替」，培養同理心以達成團隊平衡。</p></div>
+      <div class="course-card reveal"><div class="course-number">02</div><div class="course-emoji">👁️</div><h3>聽見校園的聲音</h3><p>一人戴上眼罩扮演視障者，另一人擔任引導者，共同漫步於校園。透過互動練習人際溝通與安全感的建立，提升社交覺察能力。</p></div>
+      <div class="course-card reveal"><div class="course-number">03</div><div class="course-emoji">📖</div><h3>繪本時間</h3><p>老師先請學生畫下自己的夢想並簡短分享後，開始講繪本。課程中邀請學生關注角色反應並發言，故事結束後引導學生反思，由老師作結。</p></div>
+      <div class="course-card reveal"><div class="course-number">04</div><div class="course-emoji">🎨</div><h3>我的夢想</h3><p>老師請學生利用回收材料、樹葉等校園材料，教導多種創作方式，製作屬於自己的「夢想藍圖」。完成後上台與大家分享，訓練學生的創意與表達能力。</p></div>
+      <div class="course-card reveal"><div class="course-number">05</div><div class="course-emoji">🐦</div><h3>平衡鳥與張力結構之戰</h3><p>透過提問與「張力結構」範本引出力的概念，引導學生製作出屬於自己的「平衡鳥」，最後各組競賽，看哪一隊的平衡鳥能最快穩定。</p></div>
+      <div class="course-card reveal"><div class="course-number">06</div><div class="course-emoji">🎵</div><h3>自製拇指琴（Kalimba）</h3><p>學員親手組裝木盒、鋼片等零件，完成後即時撥奏出聲，透過強烈的成就感引發對聲音科學（振動、頻率、共鳴盒原理）的好奇心與學習動力。</p></div>
+      <div class="course-card reveal"><div class="course-number">07</div><div class="course-emoji">📷</div><h3>回憶相簿</h3><p>為營隊之總結與收尾，旨在引導學員將感性經驗轉化為具象記憶。透過個人化的紀錄與製作，賦予活動獨特的個人價值，延伸學習效益。</p></div>
+      <div class="course-card reveal"><div class="course-number">08</div><div class="course-emoji">🫧</div><h3>泡泡畫</h3><p>學生透過自己調製的泡泡水創作色彩繽紛的泡泡畫，在了解「表面張力」概念的同時，結合藝術創作，留下這一刻的珍貴體驗。</p></div>
+      <div class="course-card reveal"><div class="course-number">09</div><div class="course-emoji">🧴</div><h3>泡泡魔法師──肥皂與清潔劑</h3><p>學員化身「泡泡魔法師」，認識界面活性劑半親水、半親油的特殊構造，親手調製固體肥皂與液態洗碗精，並進行「硬水戰役」與「水上漂浮戰」。</p></div>
+      <div class="course-card reveal"><div class="course-number">10</div><div class="course-emoji">🔵</div><h3>捕捉微光的魔法──藍印術</h3><p>孩子們親眼見證「魔法藥水」的奇幻轉身──原本平淡的黃綠色紙張，在陽光或紫外燈的照射下幻化成深邃的普魯士藍，體驗傳統「晒圖」技術。</p></div>
     </div>
   </div>
 </section>
 
-<!-- GROUND GAMES -->
+<!-- GAMES -->
 <section class="games-section" id="games">
   <div class="section-inner">
-    <h2 class="section-title reveal"><span class="icon">🌏</span>大地遊戲</h2>
-    <p class="reveal" style="color:var(--text-mid);margin-bottom:1.8rem;line-height:1.8;">
-      希望促進學員彼此認識，透過合作培養團隊精神與角色分工能力，學習信任隊友，並練習面對失誤時的情緒調適與包容，培養問題解決與團隊討論的能力。
-    </p>
+    <h2 class="section-title reveal">🌏 大地遊戲</h2>
+    <p class="reveal" style="color:var(--text-mid);margin-bottom:1.8rem;line-height:1.8;">希望促進學員彼此認識，透過合作培養團隊精神與角色分工能力，學習信任隊友，並練習面對失誤時的情緒調適與包容，培養問題解決與團隊討論的能力。</p>
     <div class="games-grid">
+      <div class="game-card reveal"><div class="game-emoji">💧</div><h3>水大地</h3><p>以水為核心媒介，帶入結合團隊協作、邏輯推理與感官反應的動態挑戰。透過「盛水傳遞」與「節奏敲杯」等高度互動環節，練習力道的穩定控制與分工協調。</p></div>
+      <div class="game-card reveal"><div class="game-emoji">🎡</div><h3>夜市小遊戲</h3><p>充滿台灣在地色彩的文化體驗，每位學員帶著初始的 100 元進入微型社會，學習如何在有限資源下做出最優決策。</p><ul class="game-bullets"><li>精準控制與耐心磨練：套圈圈、推瓶子、立瓶子</li><li>機率認知與決策科學：麻將賓果、真人拉霸機</li><li>團隊共榮：每個人都完成，團隊才算成功</li></ul></div>
+      <div class="game-card reveal"><div class="game-emoji">🏃</div><h3>運動會</h3><p>不只是體能的競技，更是一場關於肢體連結、空間意識與集體默契的深度探索。透過「環環相扣」與「足不出戶」等高度協作的挑戰，學習耐心與溝通。</p></div>
+    </div>
+  </div>
+</section>
 
-      <div class="game-card reveal">
-        <div class="game-emoji">💧</div>
-        <h3>水大地</h3>
-        <p>以水為核心媒介，帶入結合團隊協作、邏輯推理與感官反應的動態挑戰。透過「盛水傳遞」與「節奏敲杯」等高度互動環節，練習力道的穩定控制與分工協調。</p>
-      </div>
-
-      <div class="game-card reveal">
-        <div class="game-emoji">🎡</div>
-        <h3>夜市小遊戲</h3>
-        <p>充滿台灣在地色彩的文化體驗，每位學員帶著初始的 100 元進入微型社會，學習如何在有限資源下做出最優決策。</p>
-        <ul class="game-bullets">
-          <li>精準控制與耐心磨練：套圈圈、推瓶子、立瓶子</li>
-          <li>機率認知與決策科學：麻將賓果、真人拉霸機</li>
-          <li>團隊共榮：每個人都完成，團隊才算成功</li>
+<!-- OUTCOMES -->
+<section class="outcomes-section" id="outcomes">
+  <div class="section-inner">
+    <h2 class="section-title reveal">🎯 預期成果</h2>
+    <div class="outcomes-grid reveal">
+      <div class="outcome-box">
+        <h3>📊 量性成果</h3>
+        <ul>
+          <li>學生參與度與滿意度大於 80%</li>
+          <li>學生能表達出自己的情緒</li>
+          <li>開始認識自己的情緒與感受</li>
+          <li>學生透過活動學習團隊合作</li>
         </ul>
       </div>
-
-      <div class="game-card reveal">
-        <div class="game-emoji">🏃</div>
-        <h3>運動會</h3>
-        <p>不只是體能的競技，更是一場關於肢體連結、空間意識與集體默契的深度探索。透過「環環相扣」與「足不出戶」等高度協作的挑戰，學習耐心與溝通。</p>
+      <div class="outcome-box">
+        <h3>💬 質性成果</h3>
+        <ul>
+          <li>學生對學習新知識不排斥</li>
+          <li>學生能夠對於未來有更多想法</li>
+          <li>學習可應用於未來之軟實力</li>
+        </ul>
       </div>
-
     </div>
   </div>
 </section>
@@ -536,62 +488,55 @@
 <!-- INFO -->
 <section class="info-section" id="info">
   <div class="section-inner">
-    <h2 class="section-title reveal"><span class="icon">ℹ️</span>活動資訊</h2>
+    <h2 class="section-title reveal">ℹ️ 活動資訊</h2>
     <div class="info-grid reveal">
-      <div class="info-card">
-        <div class="info-label">📋 活動名稱</div>
-        <div class="info-value">逐光啟程──荳陣來作伙</div>
-      </div>
-      <div class="info-card">
-        <div class="info-label">📅 活動期間</div>
-        <div class="info-value">2026年7月28日－7月31日</div>
-      </div>
-      <div class="info-card">
-        <div class="info-label">📍 活動地點</div>
-        <div class="info-value">台南文正國小<br/><small style="color:var(--text-light)">721 台南市麻豆區 25 鄰 86 號</small></div>
-      </div>
-      <div class="info-card">
-        <div class="info-label">👥 參加人數</div>
-        <div class="info-value">學員 25 位 ＋ 工作人員 15 位，共約 40 人</div>
-      </div>
-      <div class="info-card">
-        <div class="info-label">🧑‍💼 活動總召</div>
-        <div class="info-value">龍建治<br/><small style="color:var(--text-light)">臺灣大學電機系 大二<br/>0963-760-392</small></div>
-      </div>
-      <div class="info-card">
-        <div class="info-label">🧑‍💼 活動副召</div>
-        <div class="info-value">莊向賢<br/><small style="color:var(--text-light)">臺北大學社工系 大二<br/>0902-116-817</small></div>
-      </div>
-      <div class="info-card">
-        <div class="info-label">🏠 主辦單位</div>
-        <div class="info-value">「逐光啟程」小組</div>
-      </div>
-      <div class="info-card">
-        <div class="info-label">🤝 指導單位</div>
-        <div class="info-value">財團法人普仁青年關懷基金會</div>
-      </div>
+      <div class="info-card"><div class="info-label">📋 活動名稱</div><div class="info-value">逐光啟程──荳陣來作伙</div></div>
+      <div class="info-card"><div class="info-label">📅 活動期間</div><div class="info-value">2026年7月28日－7月31日</div></div>
+      <div class="info-card"><div class="info-label">📍 活動地點</div><div class="info-value">台南文正國小<small>721 台南市麻豆區 25 鄰 86 號</small></div></div>
+      <div class="info-card"><div class="info-label">👥 參加人數</div><div class="info-value">學員 25 位 ＋ 工作人員 15 位<small>共約 40 人</small></div></div>
+      <div class="info-card"><div class="info-label">🧑‍💼 活動總召</div><div class="info-value">龍建治<small>臺灣大學電機系 大二・0963-760-392</small></div></div>
+      <div class="info-card"><div class="info-label">🧑‍💼 活動副召</div><div class="info-value">莊向賢<small>臺北大學社工系 大二・0902-116-817</small></div></div>
+      <div class="info-card"><div class="info-label">🏠 主辦單位</div><div class="info-value">「逐光啟程」小組</div></div>
+      <div class="info-card"><div class="info-label">🤝 指導單位</div><div class="info-value">財團法人普仁青年關懷基金會<small>106 台北市大安區建國南路一段 299 號 3 樓</small></div></div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 <strong>逐光啟程｜荳陣來作伙</strong>夏令營 &nbsp;｜&nbsp; 財團法人普仁青年關懷基金會 SDGs 計劃</p>
+  <div class="footer-top">
+    <!-- ★ 同樣換成你的 Logo 路徑 -->
+    <img src="YOUR_LOGO_URL_HERE.png" alt="普仁基金會" onerror="this.style.display='none'" />
+    <span style="color:var(--puren-orange);font-family:'Noto Serif TC',serif;font-weight:900;font-size:1.1rem;">逐光啟程｜荳陣來作伙</span>
+  </div>
+  <hr class="footer-divider" />
+  <p>© 2026 <strong>逐光啟程｜荳陣來作伙</strong> 夏令營 &nbsp;｜&nbsp; 財團法人普仁青年關懷基金會 SDGs 計劃</p>
   <p style="margin-top:.5rem;font-size:.78rem;">讓每一個孩子，都能被光照見 ☀️</p>
 </footer>
 
 <script>
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Mobile hamburger
+  let menuOpen = false;
+  function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      Object.assign(menu.style, {
+        display:'flex', flexDirection:'column', position:'absolute',
+        top:'72px', left:'0', right:'0', background:'#fff',
+        padding:'1rem', borderBottom:'3px solid #F26522',
+        boxShadow:'0 8px 24px rgba(0,0,0,.1)', height:'auto', zIndex:'300'
+      });
+    } else {
+      menu.style.display = 'none';
+    }
+  }
 </script>
 </body>
 </html>
