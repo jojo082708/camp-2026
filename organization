@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>逐光啟程｜組織職掌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --sun: #FFB830; --sky: #4EC3E0; --leaf: #5BBF7A; --puren-orange: #F26522; --puren-dark: #1A1A1A; --cream: #FFF8EE; --text-dark: #2C2416; --text-mid: #5A4A2E; --shadow: rgba(255,184,48,.15); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    nav { background: #fff; border-bottom: 3px solid var(--puren-orange); padding: 1rem 2rem; display: flex; gap: 1rem; }
+    nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
+    nav a:hover { color: var(--puren-orange); }
+    footer { background: var(--puren-dark); color: rgba(255,255,255,.5); text-align: center; padding: 2rem; margin-top: auto; }
+
+    .page-header { background: linear-gradient(135deg, #FFF3CC, #FFE0A3); padding: 3rem 2rem; text-align: center; }
+    .page-title { font-family: 'Noto Serif TC', serif; font-size: 2rem; color: var(--text-dark); }
+    .page-content { max-width: 900px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px var(--shadow); line-height: 1.8; }
+    
+    /* 組織卡片排版 */
+    .org-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .org-card { background: #fafafa; border-radius: 12px; padding: 1.5rem; border-top: 4px solid var(--puren-orange); transition: transform 0.2s; }
+    .org-card:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 8px 24px var(--shadow); }
+    .org-card h3 { color: var(--text-dark); margin-bottom: 0.5rem; font-family: 'Noto Serif TC', serif; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .org-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" style="color:var(--puren-orange); font-weight:700;">回首頁</a>
+    <a href="history.html">緣起沿革</a>
+    <a href="organization.html">組織職掌</a>
+    <a href="members.html">成員</a>
+    <a href="achievements.html">歷年成果</a>
+  </nav>
+
+  <div class="page-header"><h1 class="page-title">組織職掌</h1></div>
+  
+  <main class="page-content">
+    <p style="text-align: center; color: var(--text-mid);">「逐光啟程」營隊為了確保活動順利運行並達成教育目標，設立了完善的組織架構，各組別緊密合作，共同為孩子們打造難忘的夏令營體驗。</p>
+
+    <div class="org-grid">
+      <div class="org-card" style="border-top-color: var(--puren-orange);">
+        <h3>👑 總召 / 副召</h3>
+        <p>統籌營隊整體規劃、進度控管、對外聯繫、團隊溝通協調及突發狀況之危機處理。</p>
+      </div>
+      <div class="org-card" style="border-top-color: var(--sky);">
+        <h3>🏃 活動組</h3>
+        <p>策劃並執行大地遊戲、早操、晚會等各式動態與團康活動，帶動營隊整體氣氛。</p>
+      </div>
+      <div class="org-card" style="border-top-color: var(--leaf);">
+        <h3>📚 課程組</h3>
+        <p>設計符合營隊主軸之靜態與手作課程，編撰教案並掌握教學品質與學員學習狀況。</p>
+      </div>
+      <div class="org-card" style="border-top-color: var(--sun);">
+        <h3>💰 財務組</h3>
+        <p>編列並控管營隊整體預算、記帳、單據核銷，確保每一分經費皆發揮最大效益。</p>
+      </div>
+      <div class="org-card" style="border-top-color: #FF8C69;">
+        <h3>🤝 公關組</h3>
+        <p>負責接洽外部資源、尋求贊助挹注，並維護營隊與合作單位的良好關係。</p>
+      </div>
+      <div class="org-card" style="border-top-color: #B388FF;">
+        <h3>🎨 媒體組</h3>
+        <p>負責營隊視覺設計、社群圖文經營，以及活動期間的影像紀錄與照片整理。</p>
+      </div>
+      <div class="org-card" style="border-top-color: #4DB6AC;">
+        <h3>🧸 隊輔組</h3>
+        <p>擔任學員的小隊輔導員，照料生活起居，掌握身心狀況並引導學員反思回饋。</p>
+      </div>
+    </div>
+  </main>
+
+  <footer><p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p></footer>
+</body>
+</html>
