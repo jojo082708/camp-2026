@@ -46,7 +46,6 @@
       display: flex; align-items: center; gap: .8rem;
       text-decoration: none; flex-shrink: 0;
     }
-    /* ★ Logo 圖片 — 把 src 換成你自己的圖片路徑 */
     .nav-logo img { height: 52px; width: auto; object-fit: contain; }
     .nav-logo-fallback {
       display: none; flex-direction: column;
@@ -242,16 +241,6 @@
     .game-bullets li { font-size:.83rem; color:var(--text-mid); padding:.2rem 0; display:flex; align-items:flex-start; gap:.4rem; }
     .game-bullets li::before { content:'▸'; color:var(--sky); flex-shrink:0; }
 
-    /* OUTCOMES */
-    .outcomes-section { background: var(--warm-white); }
-    .outcomes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .outcome-box { background: #fff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 4px 16px var(--shadow); }
-    .outcome-box h3 { font-family:'Noto Serif TC',serif; font-weight:700; font-size:1rem; color:var(--puren-orange); margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
-    .outcome-box ul { list-style: none; }
-    .outcome-box ul li { font-size:.88rem; color:var(--text-mid); padding:.35rem 0; display:flex; gap:.5rem; align-items:flex-start; border-bottom:1px dashed rgba(0,0,0,.06); }
-    .outcome-box ul li:last-child { border-bottom: none; }
-    .outcome-box ul li::before { content:'✓'; color:var(--leaf); font-weight:700; flex-shrink:0; }
-
     /* INFO */
     .info-section { background: var(--cream); }
     .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 1.2rem; }
@@ -275,9 +264,7 @@
     @media (max-width: 768px) {
       .nav-menu { display: none; }
       .hamburger { display: flex; }
-      .outcomes-grid { grid-template-columns: 1fr; }
       .top-bar { display: none; }
-      /* Mobile dropdown: show when parent li has .open class */
       .nav-menu > li.open > .dropdown {
         opacity: 1; pointer-events: auto; transform: translateY(0);
         position: static; box-shadow: none;
@@ -288,46 +275,46 @@
     @media (max-width: 480px) {
       .hero { padding: 3rem 1.2rem 2.5rem; }
     }
-  
-  /* ===== LOGO INTRO OVERLAY ===== */
-  #logo-intro {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #FFF8EE;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    pointer-events: all;
-  }
-  #logo-intro.done {
-    animation: intro-fade-out 0.5s ease forwards;
-    pointer-events: none;
-  }
-  @keyframes intro-fade-out { to { opacity: 0; visibility: hidden; } }
-  #logo-intro .intro-logo {
-    width: min(360px, 65vw);
-    animation: logo-swipe 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    will-change: transform, opacity;
-  }
-  @keyframes logo-swipe {
-    0%   { transform: translateX(-130vw) rotate(-6deg) scale(0.9); opacity: 0; }
-    30%  { transform: translateX(0)      rotate(0deg)  scale(1);   opacity: 1; }
-    70%  { transform: translateX(0)      rotate(0deg)  scale(1);   opacity: 1; }
-    100% { transform: translateX(130vw)  rotate(4deg)  scale(0.9); opacity: 0; }
-  }
-  #logo-intro::after {
-    content: "";
-    position: absolute; top: 0; left: -60%;
-    width: 35%; height: 100%;
-    background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%);
-    animation: streak 2s ease forwards;
-    pointer-events: none;
-  }
-  @keyframes streak {
-    0%   { transform: translateX(-10%); opacity: 0; }
-    25%  { opacity: 1; }
-    75%  { opacity: 1; }
-    100% { transform: translateX(320%); opacity: 0; }
-  }
-</style>
+
+    /* ===== LOGO INTRO OVERLAY ===== */
+    #logo-intro {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #FFF8EE;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      pointer-events: all;
+    }
+    #logo-intro.done {
+      animation: intro-fade-out 0.5s ease forwards;
+      pointer-events: none;
+    }
+    @keyframes intro-fade-out { to { opacity: 0; visibility: hidden; } }
+    #logo-intro .intro-logo {
+      width: min(360px, 65vw);
+      animation: logo-swipe 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      will-change: transform, opacity;
+    }
+    @keyframes logo-swipe {
+      0%   { transform: translateX(-130vw) rotate(-6deg) scale(0.9); opacity: 0; }
+      30%  { transform: translateX(0)      rotate(0deg)  scale(1);   opacity: 1; }
+      70%  { transform: translateX(0)      rotate(0deg)  scale(1);   opacity: 1; }
+      100% { transform: translateX(130vw)  rotate(4deg)  scale(0.9); opacity: 0; }
+    }
+    #logo-intro::after {
+      content: "";
+      position: absolute; top: 0; left: -60%;
+      width: 35%; height: 100%;
+      background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%);
+      animation: streak 2s ease forwards;
+      pointer-events: none;
+    }
+    @keyframes streak {
+      0%   { transform: translateX(-10%); opacity: 0; }
+      25%  { opacity: 1; }
+      75%  { opacity: 1; }
+      100% { transform: translateX(320%); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
 <div id="logo-intro" aria-hidden="true"><img class="intro-logo" src="有底色無字.png" alt="Logo" /></div>
@@ -341,11 +328,6 @@
 
 <!-- NAV -->
 <nav>
-  <!--
-    ★ 換 Logo 方法：
-      方法 A：把下面 <img> 的 src 改成你自己 Logo 的 URL（建議直鏈 .png）
-      方法 B：把 Logo 圖片上傳到同一個 GitHub repo，src 改成相對路徑，例如 src="logo.png"
-  -->
   <a href="index.html" class="nav-logo">
     <img
       src="有底色無字.png"
@@ -372,7 +354,7 @@
     <li>
       <span>認識我們 <span class="caret">▾</span></span>
       <div class="dropdown">
-         <a href="history.html" style="margin:0 10px;">緣起沿革</a>
+        <a href="history.html" style="margin:0 10px;">緣起沿革</a>
         <a href="organization.html" style="margin:0 10px;">組織職掌</a>
         <a href="member.html" style="margin:0 10px;">成員</a>
         <a href="achievements.html" style="margin:0 10px;">歷年成果</a>
@@ -385,7 +367,6 @@
         <a href="#schedule">活動流程</a>
         <a href="#courses">課程內容</a>
         <a href="#games">大地遊戲</a>
-        <a href="#outcomes">預期成果</a>
       </div>
     </li>
     <li>
@@ -395,6 +376,7 @@
         <a href="#">線上捐款</a>
         <a href="#">捐贈發票</a>
       </div>
+    </li>
     <li>
       <span>聯絡我們 <span class="caret">▾</span></span>
       <div class="dropdown">
@@ -402,6 +384,7 @@
         <a href="https://www.instagram.com/beyond__the__light/" target="_blank">instagram</a>
       </div>
     </li>
+  </ul>
 </nav>
 
 <!-- HERO -->
@@ -506,32 +489,6 @@
   </div>
 </section>
 
-<!-- OUTCOMES -->
-<section class="outcomes-section" id="outcomes">
-  <div class="section-inner">
-    <h2 class="section-title reveal">🎯 預期成果</h2>
-    <div class="outcomes-grid reveal">
-      <div class="outcome-box">
-        <h3>📊 量性成果</h3>
-        <ul>
-          <li>學生參與度與滿意度大於 80%</li>
-          <li>學生能表達出自己的情緒</li>
-          <li>開始認識自己的情緒與感受</li>
-          <li>學生透過活動學習團隊合作</li>
-        </ul>
-      </div>
-      <div class="outcome-box">
-        <h3>💬 質性成果</h3>
-        <ul>
-          <li>學生對學習新知識不排斥</li>
-          <li>學生能夠對於未來有更多想法</li>
-          <li>學習可應用於未來之軟實力</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- INFO -->
 <section class="info-section" id="info">
   <div class="section-inner">
@@ -552,7 +509,6 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <!-- ★ 同樣換成你的 Logo 路徑 -->
     <img src="#" alt="普仁基金會" onerror="this.style.display='none'" />
     <span style="color:var(--puren-orange);font-family:'Noto Serif TC',serif;font-weight:900;font-size:1.1rem;">逐光啟程｜荳陣來作伙</span>
   </div>
@@ -582,15 +538,13 @@
       });
     } else {
       menu.style.display = 'none';
-      // close all dropdowns
       document.querySelectorAll('.nav-menu > li').forEach(li => li.classList.remove('open'));
     }
   }
 
-  // Mobile dropdown toggle: click on <span> to open/close
+  // Mobile dropdown toggle
   document.querySelectorAll('.nav-menu > li > span').forEach(span => {
     span.addEventListener('click', function(e) {
-      // Only apply on mobile (hamburger visible)
       if (window.innerWidth > 768) return;
       const li = this.closest('li');
       const isOpen = li.classList.contains('open');
