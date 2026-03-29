@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>逐光啟程｜緣起沿革</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #F26522;
+      --dark:   #1A1A1A;
+      --cream:  #FFF8EE;
+      --text:   #2C2416;
+      --mid:    #5A4A2E;
+      --blue:   #6B8CB8;
+      --shadow: rgba(44,36,22,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: rgba(255,255,255,.97);
+      border-bottom: 3px solid var(--orange);
+      padding: .9rem 2rem;
+      display: flex; gap: 1.5rem; align-items: center;
+      position: sticky; top: 0; z-index: 200;
+    }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: .95rem; transition: color .25s; }
+    nav a:hover, nav a.active { color: var(--orange); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: linear-gradient(135deg, #FFF3CC, #FFE0A3);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .page-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 2.8rem; font-weight: 900;
+      color: var(--text);
+    }
+    .page-sub { margin-top: .6rem; color: var(--mid); font-size: 1rem; }
+
+    /* ── Content ── */
+    .page-content {
+      max-width: 860px;
+      margin: 3rem auto 5rem;
+      padding: 0 2rem;
+      flex: 1;
+    }
+
+    /* ── Section card ── */
+    .section-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px var(--shadow);
+      padding: 2.5rem 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-label {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.25rem; font-weight: 900;
+      color: var(--orange);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 1.25rem;
+      background: var(--orange);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .section-card p {
+      line-height: 1.9;
+      color: var(--mid);
+      font-size: .97rem;
+    }
+    .section-card p + p { margin-top: 1rem; }
+
+    /* ── Quote highlight ── */
+    .highlight-quote {
+      border-left: 4px solid var(--orange);
+      background: #FFF8EE;
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 12px 12px 0;
+      margin: 1.5rem 0;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 2rem; margin-top: .5rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 7px; top: 6px; bottom: 6px;
+      width: 2px; background: #ede8df;
+      border-radius: 2px;
+    }
+    .tl-item {
+      position: relative;
+      padding: 0 0 1.8rem 1.5rem;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute; left: -1.5rem; top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--orange);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--orange);
+    }
+    .tl-year {
+      font-weight: 700; font-size: .78rem;
+      color: var(--orange); letter-spacing: 1px;
+      margin-bottom: .25rem;
+    }
+    .tl-text { color: var(--mid); font-size: .93rem; line-height: 1.75; }
+
+    /* ── SDGs tag row ── */
+    .sdg-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .sdg-tag {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: .72rem; font-weight: 700;
+      padding: .25rem .7rem;
+      border-radius: 20px;
+      letter-spacing: .5px;
+    }
+    .sdg-tag.blue { background: var(--blue); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer p { font-size: .88rem; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">回首頁</a>
+  <a href="history.html" class="active">緣起沿革</a>
+  <a href="organization.html">組織職掌</a>
+  <a href="members.html">團隊成員</a>
+  <a href="achievements.html">歷屆成果</a>
+</nav>
+
+<div class="page-header">
+  <h1 class="page-title">緣起沿革</h1>
+  <p class="page-sub">一束微光，如何成為一段啟程的故事</p>
+</div>
+
+<main class="page-content">
+
+  <div class="section-card">
+    <div class="section-label">我們是誰</div>
+    <p>「逐光啟程」是一群由普仁基金會培育、走過黑暗的大學生所組成的志工服務團隊。我們曾是那些需要幫助的孩子，因為一束微光而改變了人生方向。</p>
+    <p>如今，我們希望成為那束光——點亮下一個孩子，回饋社會。</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">創立初衷</div>
+    <div class="highlight-quote">「我們都是受基金會幫助、曾經歷過黑暗的孩子，因一點微弱的光亮而改變生命。受世界善意與養分灌溉茁壯成長的我們，願意成為那束光，點亮其他孩子、回饋社會。」</div>
+    <p>我們深知，一次營隊或許無法對孩子有立即性的回饋與改變，但可以成為一個重要的起點。我們希望這些課程與活動，能成為進入孩子心中的一顆種子與養分，讓孩子們真正相信「原來我也可以」、「我是有能力的」，並陪伴他們踏出做更大夢想的第一步。</p>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">活動理念</div>
+    <p>我們希望透過本次營隊，讓弱勢與偏鄉的孩子不只是短暫接觸多元領域的課程，而是在學習與體驗的過程中，逐步拓展對世界的想像與理解。</p>
+    <p>課程結合體驗教育、社會情緒學習（SEL）與 SDGs 永續發展目標，讓孩子透過手作、科學與藝術，體驗學習的樂趣，發現自己的可能性。</p>
+    <div class="sdg-tags">
+      <span class="sdg-tag">SDG 4 優質教育</span>
+      <span class="sdg-tag blue">SDG 10 減少不平等</span>
+      <span class="sdg-tag">SDG 3 良好健康</span>
+      <span class="sdg-tag blue">SEL 社會情緒學習</span>
+      <span class="sdg-tag">體驗教育</span>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-label">重要里程碑</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">2026 年 1月</div>
+        <div class="tl-text">「逐光啟程」小組正式成立，由普仁基金會校友龍建治、莊向賢召集，集結 12 位來自全台各大學的夥伴。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2026 年 3 m月</div>
+        <div class="tl-text">完成團隊章程制定、課程規劃與計畫書撰寫，確認活動場地與學員對象。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2026 年 7 月 28–31 日</div>
+        <div class="tl-text">首屆「荳陣來作伙」夏令營正式舉辦，服務偏鄉與弱勢學童，展開逐光啟程的第一步。</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p>
+</footer>
+
+</body>
+</html>
