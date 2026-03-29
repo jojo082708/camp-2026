@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>活動消息｜逐光啟程 荳陣來作伙 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sun: #FFB830;
+      --sky: #4EC3E0;
+      --leaf: #5BBF7A;
+      --peach: #FF8C69;
+      --puren-orange: #F26522;
+      --puren-dark: #1A1A1A;
+      --cream: #FFF8EE;
+      --warm-white: #FFFDF7;
+      --text-dark: #2C2416;
+      --text-mid: #5A4A2E;
+      --text-light: #8A7458;
+      --shadow: rgba(255,184,48,.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,.97); backdrop-filter: blur(8px);
+      border-bottom: 3px solid var(--puren-orange);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .8rem;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .nav-logo img { height: 52px; width: auto; object-fit: contain; }
+    .nav-logo-fallback { display: flex; flex-direction: column; }
+    .nav-logo-fallback .logo-main {
+      font-family: 'Noto Serif TC', serif; font-weight: 900; font-size: 1rem;
+      color: var(--puren-orange); line-height: 1.2;
+    }
+    .nav-logo-fallback .logo-sub { font-size: .7rem; color: var(--text-light); }
+    .nav-menu { display: flex; list-style: none; gap: 0; height: 72px; }
+    .nav-menu > li { position: relative; display: flex; align-items: center; }
+    .nav-menu > li > a,
+    .nav-menu > li > span {
+      display: flex; align-items: center; gap: .3rem;
+      padding: 0 1rem; height: 100%;
+      text-decoration: none; color: var(--text-dark);
+      font-size: .88rem; font-weight: 500; white-space: nowrap; cursor: pointer;
+      transition: color .2s; border-bottom: 3px solid transparent; margin-bottom: -3px;
+    }
+    .nav-menu > li > a:hover,
+    .nav-menu > li:hover > a,
+    .nav-menu > li:hover > span { color: var(--puren-orange); border-bottom-color: var(--puren-orange); }
+    .nav-menu > li.active > span { color: var(--puren-orange); border-bottom-color: var(--puren-orange); }
+    .caret { font-size: .6rem; transition: transform .2s; }
+    .nav-menu > li:hover > span .caret { transform: rotate(180deg); }
+    .dropdown {
+      position: absolute; top: 100%; left: 0;
+      background: #fff; border-top: 3px solid var(--puren-orange);
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      min-width: 160px; opacity: 0; pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity .2s, transform .2s; z-index: 300;
+    }
+    .nav-menu > li:hover .dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .dropdown a {
+      display: block; padding: .7rem 1.2rem;
+      font-size: .85rem; color: var(--text-mid);
+      text-decoration: none; white-space: nowrap;
+      border-left: 3px solid transparent;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .dropdown a:hover { background: #FFF3E8; color: var(--puren-orange); border-left-color: var(--puren-orange); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .5rem; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-dark); border-radius: 2px; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(135deg, #FFF3CC 0%, #FFE0A3 40%, #FFDAB3 100%);
+      padding: 3.5rem 2rem 3rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .page-header::after {
+      content: '📣'; position: absolute; right: 5%; bottom: -10px;
+      font-size: 7rem; opacity: .08; pointer-events: none;
+    }
+    .page-header-badge {
+      display: inline-block; background: var(--puren-orange); color: #fff;
+      font-size: .8rem; font-weight: 700; padding: .3rem 1.2rem;
+      border-radius: 999px; margin-bottom: 1rem; letter-spacing: .08em;
+    }
+    .page-header h1 {
+      font-family: 'Noto Serif TC', serif; font-weight: 900;
+      font-size: clamp(1.8rem, 5vw, 3rem); color: var(--peach);
+    }
+    .page-header p { margin-top: .6rem; color: var(--text-mid); font-size: .95rem; }
+
+    /* MAIN LAYOUT */
+    .main-wrap { max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Noto Serif TC', serif; font-weight: 900;
+      font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--text-dark);
+      display: flex; align-items: center; gap: .7rem; margin-bottom: 1.5rem;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 3px;
+      background: linear-gradient(to right, var(--puren-orange), transparent);
+      border-radius: 99px;
+    }
+
+    /* NEWS CARDS */
+    .news-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3.5rem; }
+    .news-card {
+      background: #fff; border-radius: 16px; padding: 1.3rem 1.5rem;
+      box-shadow: 0 4px 18px var(--shadow);
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      border-left: 5px solid var(--sun);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .news-card:hover { transform: translateX(4px); box-shadow: 0 8px 28px var(--shadow); }
+    .news-card.type-register { border-left-color: var(--puren-orange); }
+    .news-card.type-result   { border-left-color: var(--leaf); }
+    .news-card.type-briefing { border-left-color: var(--sky); }
+    .news-card.type-notice   { border-left-color: #B388FF; }
+    .news-card.type-photo    { border-left-color: var(--peach); }
+    .news-icon { font-size: 2rem; flex-shrink: 0; margin-top: .1rem; }
+    .news-body { flex: 1; }
+    .news-meta { display: flex; align-items: center; gap: .6rem; margin-bottom: .4rem; flex-wrap: wrap; }
+    .news-tag {
+      font-size: .72rem; font-weight: 700; padding: .2rem .6rem;
+      border-radius: 6px; letter-spacing: .05em;
+    }
+    .tag-register { background: #FEE8DB; color: var(--puren-orange); }
+    .tag-result   { background: #E8F8ED; color: #2E8B57; }
+    .tag-briefing { background: #E0F5FB; color: #1A7A9A; }
+    .tag-notice   { background: #F0EAFF; color: #6B3FA0; }
+    .tag-photo    { background: #FFF0E8; color: #C05020; }
+    .news-date { font-size: .78rem; color: var(--text-light); }
+    .news-status {
+      font-size: .72rem; font-weight: 700; padding: .2rem .6rem;
+      border-radius: 6px;
+    }
+    .status-open   { background: #D4EDDA; color: #155724; }
+    .status-closed { background: #F8D7DA; color: #721C24; }
+    .status-soon   { background: #FFF3CD; color: #856404; }
+    .status-done   { background: #E2E3E5; color: #383D41; }
+    .news-title {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: 1rem; color: var(--text-dark); margin-bottom: .4rem;
+    }
+    .news-desc { font-size: .88rem; line-height: 1.75; color: var(--text-light); }
+    .news-link {
+      display: inline-block; margin-top: .7rem;
+      font-size: .82rem; font-weight: 700; color: var(--puren-orange);
+      text-decoration: none; border-bottom: 1.5px solid transparent;
+      transition: border-color .2s;
+    }
+    .news-link:hover { border-bottom-color: var(--puren-orange); }
+
+    /* PHOTO GRID */
+    .photo-section { margin-bottom: 3.5rem; }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .photo-placeholder {
+      aspect-ratio: 4/3; border-radius: 14px;
+      background: linear-gradient(135deg, #FFE8CC, #FFD0A0);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: var(--text-light); font-size: .82rem; gap: .4rem;
+      border: 2px dashed rgba(242,101,34,.3);
+    }
+    .photo-placeholder span { font-size: 2rem; }
+
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center; padding: 3rem 1rem;
+      color: var(--text-light); font-size: .95rem;
+    }
+    .empty-state .empty-icon { font-size: 3rem; margin-bottom: .8rem; }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .5s ease, transform .5s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* FOOTER */
+    footer { background: var(--puren-dark); color: rgba(255,255,255,.7); font-size: .88rem; }
+    .footer-main {
+      max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem 2rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; align-items: start;
+    }
+    .footer-logo-text {
+      font-family: 'Noto Serif TC', serif; font-weight: 900;
+      font-size: 1.15rem; color: var(--puren-orange); display: block; margin-bottom: .5rem;
+    }
+    .footer-tagline { color: rgba(255,255,255,.45); font-size: .82rem; line-height: 1.7; }
+    .footer-section-label {
+      font-weight: 700; letter-spacing: .08em; color: var(--sun);
+      font-size: .78rem; margin-bottom: .8rem; text-transform: uppercase;
+    }
+    .footer-contact p { margin-bottom: .4rem; line-height: 1.7; }
+    .footer-map-link {
+      display: inline-block; margin-top: .4rem; color: var(--sky);
+      text-decoration: none; font-size: .85rem; line-height: 1.6; transition: color .2s;
+    }
+    .footer-map-link:hover { color: #fff; text-decoration: underline; }
+    .footer-socials { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .social-btn {
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.3rem; transition: transform .2s, opacity .2s;
+    }
+    .social-btn:hover { transform: translateY(-3px); opacity: .85; }
+    .social-btn svg { width: 22px; height: 22px; }
+    .social-btn.line { background: #06C755; color: #fff; }
+    .social-btn.ig   { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: #fff; }
+    .social-btn.web  { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); font-size: 1.2rem; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,.1); max-width: 960px; margin: 0 auto; }
+    .footer-copy {
+      background: var(--puren-orange); color: rgba(255,255,255,.9);
+      text-align: center; padding: .9rem 1rem; font-size: .82rem;
+    }
+    .footer-copy strong { color: #fff; }
+
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .hamburger { display: flex; }
+      .footer-main { grid-template-columns: 1fr; gap: 1.8rem; }
+      .nav-menu > li.open > .dropdown {
+        opacity: 1; pointer-events: auto; transform: translateY(0);
+        position: static; box-shadow: none;
+        background: #FFF8EE; border-radius: 8px; margin: .3rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="有底色無字.png" alt="普仁青年關懷基金會" onerror="this.style.display='none';" />
+    <div class="nav-logo-fallback">
+      <span class="logo-main">逐光啟程｜荳陣來作伙</span>
+      <span class="logo-sub">普仁青年關懷基金會 SDGs 計劃</span>
+    </div>
+  </a>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <ul class="nav-menu" id="navMenu">
+    <li class="active">
+      <span>活動消息 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="news.html">最新消息</a>
+      </div>
+    </li>
+    <li>
+      <span>認識我們 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="history.html">緣起沿革</a>
+        <a href="organization.html">組織職掌</a>
+        <a href="member.html">成員</a>
+        <a href="achievements.html">歷年成果</a>
+      </div>
+    </li>
+    <li>
+      <span>本次營隊 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="index.html#purpose">活動目的</a>
+        <a href="index.html#schedule">活動流程</a>
+        <a href="index.html#courses">課程內容</a>
+        <a href="index.html#games">大地遊戲</a>
+      </div>
+    </li>
+    <li>
+      <span>支持我們 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="#">捐款方式</a>
+        <a href="#">線上捐款</a>
+        <a href="#">捐贈發票</a>
+      </div>
+    </li>
+    <li>
+      <span>聯絡我們 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="https://lin.ee/nWMiqPr" target="_blank">Line客服</a>
+        <a href="https://www.instagram.com/beyond__the__light/" target="_blank">Instagram</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-badge">2026 夏令營</div>
+  <h1>活動消息</h1>
+  <p>報名、錄取、說明會、注意事項與營隊花絮，一次掌握 📣</p>
+</div>
+
+<!-- MAIN -->
+<div class="main-wrap">
+
+  <!-- 報名資訊 -->
+  <section class="reveal">
+    <h2 class="section-title">📋 報名資訊</h2>
+    <div class="news-list">
+      <div class="news-card type-register">
+        <div class="news-icon">📝</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-tag tag-register">報名</span>
+            <span class="news-date">2026 / 06 / 01</span>
+            <span class="news-status status-soon">即將開放</span>
+          </div>
+          <div class="news-title">2026 夏令營報名開始</div>
+          <div class="news-desc">報名時間：2026 年 6 月 1 日（一）至 6 月 30 日（二）。本次營隊招收國小 3–6 年級學員共 25 位，名額有限，請把握機會！</div>
+          <a href="#" class="news-link">前往報名表單 →</a>
+        </div>
+      </div>
+      <div class="news-card type-register">
+        <div class="news-icon">⏰</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-tag tag-register">截止</span>
+            <span class="news-date">2026 / 06 / 30</span>
+            <span class="news-status status-soon">即將截止</span>
+          </div>
+          <div class="news-title">報名截止日提醒</div>
+          <div class="news-desc">報名將於 2026 年 6 月 30 日（二）23:59 截止，逾期恕不受理。請確認填寫資料正確並完成送出。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 錄取名單 -->
+  <section class="reveal">
+    <h2 class="section-title">✅ 錄取名單</h2>
+    <div class="news-list">
+      <div class="news-card type-result">
+        <div class="news-icon">🎉</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-tag tag-result">錄取</span>
+            <span class="news-date">2026 / 07 / 10</span>
+            <span class="news-status status-soon">待公告</span>
+          </div>
+          <div class="news-title">2026 夏令營錄取名單公告</div>
+          <div class="news-desc">錄取名單將於 2026 年 7 月 10 日（五）公告於本頁面，並同步透過 LINE 官方帳號通知。請注意查收，未收到通知者請主動聯絡工作人員。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 說明會 -->
+  <section class="reveal">
+    <h2 class="section-title">📢 活動前說明會</h2>
+    <div class="news-list">
+      <div class="news-card type-briefing">
+        <div class="news-icon">🎙️</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-tag tag-briefing">說明會</span>
+            <span class="news-date">2026 / 07 / 20</span>
+            <span class="news-status status-soon">待確認</span>
+          </div>
+          <div class="news-title">營前線上說明會</div>
+          <div class="news-desc">預計於 7 月 20 日（一）晚間 19:30 舉辦線上說明會，針對活動流程、攜帶物品、交通安排等進行說明。錄取學員家長請務必出席或委託他人代為參加。會議連結將另行通知。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注意事項 -->
+  <section class="reveal">
+    <h2 class="section-title">⚠️ 注意事項</h2>
+    <div class="news-list">
+      <div class="news-card type-notice">
+        <div class="news-icon">🎒</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-tag tag-notice">注意事項</span>
+            <span class="news-date">2026 / 07 / 15</span>
+            <span class="news-status status-soon">待更新</span>
+          </div>
+          <div class="news-title">攜帶物品與行前須知</div>
+          <div class="news-desc">請學員攜帶：健保卡、換洗衣物（4天3夜）、個人盥洗用品、水壺、防曬乳、雨衣（勿帶雨傘）。禁止攜帶：零食、玩具、貴重物品。詳細清單將於說明會後更新。</div>
+        </div>
+      </div>
+      <div class="news-card type-notice">
+        <div class="news-icon">🚌</div>
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-tag tag-notice">注意事項</span>
+            <span class="news-date">2026 / 07 / 15</span>
+            <span class="news-status status-soon">待更新</span>
+          </div>
+          <div class="news-title">交通與集合地點說明</div>
+          <div class="news-desc">活動地點為台南市麻豆區文正國小（721 台南市麻豆區 25 鄰 86 號）。7 月 28 日（二）請於 08:00 前完成報到，請家長自行送達。詳細交通資訊將於說明會後更新。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 花絮照片 -->
+  <section class="photo-section reveal">
+    <h2 class="section-title">📸 營隊花絮</h2>
+    <p style="color:var(--text-light);font-size:.9rem;margin-bottom:1.2rem;line-height:1.8;">
+      活動結束後，精彩花絮照片將陸續更新於此！敬請期待 🌟
+    </p>
+    <div class="photo-grid">
+      <div class="photo-placeholder"><span>🖼️</span>照片更新中</div>
+      <div class="photo-placeholder"><span>🖼️</span>照片更新中</div>
+      <div class="photo-placeholder"><span>🖼️</span>照片更新中</div>
+      <div class="photo-placeholder"><span>🖼️</span>照片更新中</div>
+      <div class="photo-placeholder"><span>🖼️</span>照片更新中</div>
+      <div class="photo-placeholder"><span>🖼️</span>照片更新中</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <span class="footer-logo-text">逐光啟程｜荳陣來作伙</span>
+      <p class="footer-tagline">讓每一個孩子，都能被光照見 ☀️</p>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-section-label">聯絡資訊</div>
+      <p>📞 總召：0963-760-392（龍建治）</p>
+      <p>📞 副召：0902-116-817（莊向賢）</p>
+      <a class="footer-map-link" href="https://maps.google.com/?q=721台南市麻豆區25鄰86號" target="_blank">
+        📍 721 台南市麻豆區 25 鄰 86 號（台南文正國小）↗
+      </a>
+    </div>
+    <div class="footer-social-block">
+      <div class="footer-section-label">追蹤我們</div>
+      <div class="footer-socials">
+        <a href="https://lin.ee/nWMiqPr" target="_blank" class="social-btn line" aria-label="LINE">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        </a>
+        <a href="https://www.instagram.com/beyond__the__light/" target="_blank" class="social-btn ig" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.you-care.org.tw/" target="_blank" class="social-btn web" aria-label="普仁官網">🌐</a>
+      </div>
+    </div>
+  </div>
+  <hr class="footer-divider" />
+  <div class="footer-copy">
+    © 2026 <strong>逐光啟程｜荳陣來作伙</strong> 夏令營 ｜ 財團法人普仁青年關懷基金會 SDGs 計劃
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  let menuOpen = false;
+  function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      Object.assign(menu.style, {
+        display:'flex', flexDirection:'column', position:'absolute',
+        top:'72px', left:'0', right:'0', background:'#fff',
+        padding:'1rem', borderBottom:'3px solid #F26522',
+        boxShadow:'0 8px 24px rgba(0,0,0,.1)', height:'auto', zIndex:'300'
+      });
+    } else {
+      menu.style.display = 'none';
+      document.querySelectorAll('.nav-menu > li').forEach(li => li.classList.remove('open'));
+    }
+  }
+  document.querySelectorAll('.nav-menu > li > span').forEach(span => {
+    span.addEventListener('click', function() {
+      if (window.innerWidth > 768) return;
+      const li = this.closest('li');
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('.nav-menu > li').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
