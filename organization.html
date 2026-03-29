@@ -3,84 +3,441 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>逐光啟程｜歷屆成果</title>
+  <title>逐光啟程｜組織職掌</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { 
-      --puren-orange: #F26522; 
-      --puren-dark: #1A1A1A; 
-      --cream: #FFF8EE; 
-      --text-dark: #2C2416; 
-      --shadow: rgba(255,184,48,.15); 
+    :root {
+      --orange: #F26522;
+      --dark:   #1A1A1A;
+      --cream:  #FFF8EE;
+      --text:   #2C2416;
+      --mid:    #5A4A2E;
+      --blue:   #6B8CB8;
+      --blue-l: #E8EFF7;
+      --shadow: rgba(44,36,22,.10);
     }
-    
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body { 
-      font-family: 'Noto Sans TC', sans-serif; 
-      background: var(--cream); 
-      color: var(--text-dark); 
-      display: flex; 
-      flex-direction: column; 
-      min-height: 100vh; 
-    }
-    
-    /* 導覽列 */
-    nav { 
-      background: rgba(255,255,255,.97); 
-      border-bottom: 3px solid var(--puren-orange); 
-      padding: 1rem 2rem; 
-      display: flex; 
-      gap: 1.5rem;
-      align-items: center; 
-    }
-    nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
-    nav a:hover { color: var(--puren-orange); }
 
-    /* 標題與內容區塊 */
-    .page-header { background: linear-gradient(135deg, #FFF3CC, #FFE0A3); padding: 4rem 2rem; text-align: center; }
-    .page-title { font-family: 'Noto Serif TC', serif; font-size: 2.5rem; color: var(--text-dark); }
-    
-    .page-content { 
-      max-width: 900px; 
-      margin: 3rem auto; 
-      padding: 3rem; 
-      background: #fff; 
-      border-radius: 16px; 
-      box-shadow: 0 4px 20px var(--shadow); 
-      min-height: 200px; /* 確保內容區塊有一點基本高度 */
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* 黑色頁尾 */
-    footer { 
-      background: var(--puren-dark); 
-      color: rgba(255,255,255,.55); 
-      text-align: center; 
-      padding: 2rem 1rem; 
-      margin-top: auto; /* 將頁尾推到底部 */
+    /* ── Nav ── */
+    nav {
+      background: rgba(255,255,255,.97);
+      border-bottom: 3px solid var(--orange);
+      padding: .9rem 2rem;
+      display: flex; gap: 1.5rem; align-items: center;
+      position: sticky; top: 0; z-index: 200;
+    }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: .95rem; transition: color .25s; }
+    nav a:hover, nav a.active { color: var(--orange); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: linear-gradient(135deg, #FFF3CC, #FFE0A3);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .page-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 2.8rem; font-weight: 900;
+      color: var(--text);
+    }
+    .page-sub { margin-top: .6rem; color: var(--mid); font-size: 1rem; }
+
+    /* ── Content ── */
+    .page-content {
+      max-width: 980px;
+      margin: 3rem auto 5rem;
+      padding: 0 2rem;
+      flex: 1;
+    }
+
+    /* ── Section title ── */
+    .section-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.4rem; font-weight: 900;
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 1.4rem;
+      background: var(--orange);
+      border-radius: 3px;
+    }
+
+    /* ── Mission box ── */
+    .mission-box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px var(--shadow);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+      border-left: 5px solid var(--orange);
+      font-size: .97rem;
+      color: var(--mid);
+      line-height: 1.9;
+    }
+
+    /* ── Table wrapper ── */
+    .table-wrap {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px var(--shadow);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead tr {
+      background: var(--orange);
+      color: #fff;
+    }
+    thead th {
+      padding: .85rem 1.2rem;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-align: left;
+    }
+
+    tbody tr { border-bottom: 1px solid #f0ebe1; transition: background .2s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #FFF8EE; }
+
+    td {
+      padding: 1rem 1.2rem;
+      vertical-align: top;
+      font-size: .9rem;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    /* role tag */
+    .role-tag {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: .7rem; font-weight: 700;
+      padding: .15rem .55rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .role-tag.blue { background: var(--blue); }
+
+    /* person name */
+    .person-name {
+      font-weight: 700;
+      font-size: .93rem;
+    }
+    .person-count {
+      font-size: .75rem;
+      color: var(--mid);
+      margin-top: .15rem;
+    }
+
+    /* duties list */
+    .duties {
+      list-style: none;
+      padding: 0;
+    }
+    .duties li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: .3rem;
+      font-size: .88rem;
+      color: var(--mid);
+    }
+    .duties li::before {
+      content: '·';
+      position: absolute; left: .2rem;
+      color: var(--orange);
+      font-weight: 900;
+    }
+
+    /* ── Org structure diagram ── */
+    .org-diagram {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px var(--shadow);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .od-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .od-connector { width: 2px; height: 28px; background: #ddd; margin: 0 auto; }
+    .od-h-line {
+      display: flex; align-items: flex-start;
+      position: relative;
+      width: 100%; justify-content: center;
+      margin: 0;
+    }
+
+    .od-box {
+      border: 2px solid var(--orange);
+      border-radius: 10px;
+      padding: .5rem 1.1rem;
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--text);
+      background: #fff;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .od-box.top { background: var(--orange); color: #fff; font-size: 1rem; }
+    .od-box.sub { background: #FFF3E0; border-color: var(--orange); }
+    .od-box.group { border-color: var(--blue); color: var(--blue); font-size: .82rem; }
+
+    .od-branch {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer p { font-size: .88rem; letter-spacing: 1px; }
+
+    @media (max-width: 700px) {
+      thead th:nth-child(4) { display: none; }
+      td:nth-child(4) { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" style="color:var(--puren-orange); font-weight:700; font-size: 1.1rem;">回首頁</a>
-    <a href="history.html">緣起沿革</a>
-    <a href="organization.html">組織職掌</a>
-    <a href="members.html">團隊成員</a>
-    <a href="achievements.html" style="color:var(--puren-orange); font-weight:700;">歷屆成果</a>
-  </nav>
+<nav>
+  <a href="index.html">回首頁</a>
+  <a href="history.html">緣起沿革</a>
+  <a href="organization.html" class="active">組織職掌</a>
+  <a href="members.html">團隊成員</a>
+  <a href="achievements.html">歷屆成果</a>
+</nav>
 
-  <div class="page-header">
-    <h1 class="page-title">歷屆成果</h1>
+<div class="page-header">
+  <h1 class="page-title">組織職掌</h1>
+  <p class="page-sub">12 位夥伴，各司其職，共同守護每一個孩子</p>
+</div>
+
+<main class="page-content">
+
+  <div class="mission-box">
+    <strong>團隊宗旨</strong><br>
+    本小組致力於陪伴弱勢與偏鄉學童，透過營隊多元化的課程與體驗活動，協助孩子拓展對世界的想像。我們期許能成為學童生命中的微光，引導其建立自信與成就感。
   </div>
-  
-  <main class="page-content">
-    </main>
 
-  <footer>
-    <p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p>
-  </footer>
+  <h2 class="section-title">職務與職責一覽</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:13%">職稱</th>
+          <th style="width:18%">負責人</th>
+          <th style="width:8%">人數</th>
+          <th style="width:61%">主要職責</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><span class="role-tag">總召</span></td>
+          <td>
+            <div class="person-name">龍建治</div>
+            <div class="person-count">台灣大學 電機系</div>
+          </td>
+          <td>1</td>
+          <td>
+            <ul class="duties">
+              <li>對外聯繫合作對象與廠商</li>
+              <li>監督各組項目與細流</li>
+              <li>行政項目發想與進行</li>
+              <li>場刊製作</li>
+              <li>組長與職位輪替安排</li>
+              <li>召集線上匯報會議</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag">副總召</span></td>
+          <td>
+            <div class="person-name">莊向賢</div>
+            <div class="person-count">臺北大學 社工系</div>
+          </td>
+          <td>1</td>
+          <td>
+            <ul class="duties">
+              <li>協助總召處理各項事宜</li>
+              <li>監督各組項目與細流</li>
+              <li>活動經費籌措</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag">統籌組</span></td>
+          <td>
+            <div class="person-name">黃永勳・蔡朝欽</div>
+            <div class="person-count">義守大學 醫學系<br>聯合大學 機械系</div>
+          </td>
+          <td>2</td>
+          <td>
+            <ul class="duties">
+              <li>各項醫療護理準備</li>
+              <li>計畫書撰寫（對國小與基金會）</li>
+              <li>營隊餐食與交通規劃籌備</li>
+              <li>各組器材採購協調</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag blue">課程組</span></td>
+          <td>
+            <div class="person-name">莊向賢（組長）</div>
+            <div class="person-count">臺北大學 社工系</div>
+          </td>
+          <td>5</td>
+          <td>
+            <ul class="duties">
+              <li>帶領課程組員及任務分配</li>
+              <li>課程器材項目規劃與採購</li>
+              <li>課程設計與細流撰寫</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag blue">活動組</span></td>
+          <td>
+            <div class="person-name">廖漢翔（組長）</div>
+            <div class="person-count">陽明交大 應數系</div>
+          </td>
+          <td>3</td>
+          <td>
+            <ul class="duties">
+              <li>帶領活動組員及任務分配</li>
+              <li>活動器材採購協調</li>
+              <li>場佈活動場地</li>
+              <li>大地遊戲設計與細流撰寫</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag blue">財務組</span></td>
+          <td>
+            <div class="person-name">林育誠</div>
+            <div class="person-count">台灣科大 化工系</div>
+          </td>
+          <td>1</td>
+          <td>
+            <ul class="duties">
+              <li>活動經費控管和核銷</li>
+              <li>收支記錄與預算編列</li>
+              <li>確保經費使用透明合理</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag">美宣組</span></td>
+          <td>
+            <div class="person-name">黃永勳（組長）</div>
+            <div class="person-count">義守大學 醫學系</div>
+          </td>
+          <td>3</td>
+          <td>
+            <ul class="duties">
+              <li>活動 Logo 設計</li>
+              <li>活動手冊設計</li>
+              <li>美宣器材採購</li>
+              <li>IG 貼文文章美編</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag">公關組</span></td>
+          <td>
+            <div class="person-name">龍建治（組長）</div>
+            <div class="person-count">台灣大學 電機系</div>
+          </td>
+          <td>3</td>
+          <td>
+            <ul class="duties">
+              <li>與合作國小細項接洽</li>
+              <li>對外會議宣布與籌辦</li>
+              <li>贊助單位與合作夥伴聯繫</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag blue">媒體組</span></td>
+          <td>
+            <div class="person-name">蔡朝欽（組長）</div>
+            <div class="person-count">聯合大學 機械系</div>
+          </td>
+          <td>3</td>
+          <td>
+            <ul class="duties">
+              <li>IG 帳號經營與內容發佈</li>
+              <li>活動紀錄與影像記錄</li>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <td><span class="role-tag">隊輔組</span></td>
+          <td>
+            <div class="person-name">莊向賢（組長）</div>
+            <div class="person-count">臺北大學 社工系</div>
+          </td>
+          <td>6</td>
+          <td>
+            <ul class="duties">
+              <li>隊輔專業知能培訓及帶隊技巧指導</li>
+              <li>營隊期間學員狀況追蹤</li>
+              <li>情緒照顧及危機處理</li>
+              <li>學員生活照顧與秩序維護</li>
+            </ul>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p>
+</footer>
 
 </body>
 </html>
