@@ -3,52 +3,360 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>逐光啟程｜關於我們</title>
+  <title>逐光啟程｜歷屆成果</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --sun: #FFB830; --sky: #4EC3E0; --leaf: #5BBF7A; --puren-orange: #F26522; --puren-dark: #1A1A1A; --cream: #FFF8EE; --text-dark: #2C2416; --text-mid: #5A4A2E; --shadow: rgba(255,184,48,.15); }
+    :root {
+      --orange: #F26522;
+      --dark:   #1A1A1A;
+      --cream:  #FFF8EE;
+      --text:   #2C2416;
+      --mid:    #5A4A2E;
+      --blue:   #6B8CB8;
+      --leaf:   #5BBF7A;
+      --shadow: rgba(44,36,22,.10);
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; }
-    
-    /* 簡易導覽列與頁尾 (建議後續換成你 index.html 的完整版) */
-    nav { background: #fff; border-bottom: 3px solid var(--puren-orange); padding: 1rem 2rem; display: flex; gap: 1rem; }
-    nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
-    nav a:hover { color: var(--puren-orange); }
-    footer { background: var(--puren-dark); color: rgba(255,255,255,.5); text-align: center; padding: 2rem; margin-top: auto; }
 
-    /* 子網頁內容區塊 */
-    .page-header { background: linear-gradient(135deg, #FFF3CC, #FFE0A3); padding: 3rem 2rem; text-align: center; }
-    .page-title { font-family: 'Noto Serif TC', serif; font-size: 2rem; color: var(--text-dark); }
-    .page-content { max-width: 800px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px var(--shadow); line-height: 1.8; }
-    
-    /* 成員頁面專用表格 */
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-    .team-box { border-left: 4px solid var(--sky); padding: 1rem; background: #f9f9f9; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: rgba(255,255,255,.97);
+      border-bottom: 3px solid var(--orange);
+      padding: .9rem 2rem;
+      display: flex; gap: 1.5rem; align-items: center;
+      position: sticky; top: 0; z-index: 200;
+    }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: .95rem; transition: color .25s; }
+    nav a:hover, nav a.active { color: var(--orange); }
+
+    /* ── Page header ── */
+    .page-header {
+      background: linear-gradient(135deg, #FFF3CC, #FFE0A3);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .page-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 2.8rem; font-weight: 900;
+      color: var(--text);
+    }
+    .page-sub { margin-top: .6rem; color: var(--mid); font-size: 1rem; }
+
+    /* ── Content ── */
+    .page-content {
+      max-width: 980px;
+      margin: 3rem auto 5rem;
+      padding: 0 2rem;
+      flex: 1;
+    }
+
+    /* ── Year tab selector ── */
+    .year-tabs {
+      display: flex; gap: .75rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .year-tab {
+      padding: .5rem 1.4rem;
+      border-radius: 30px;
+      border: 2px solid var(--orange);
+      background: transparent;
+      color: var(--orange);
+      font-weight: 700;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: all .25s;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .year-tab.active, .year-tab:hover {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* ── Edition block ── */
+    .edition { display: none; }
+    .edition.active { display: block; }
+
+    /* ── Edition header ── */
+    .edition-header {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px var(--shadow);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .edition-badge {
+      background: var(--orange);
+      color: #fff;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.6rem; font-weight: 900;
+      padding: .8rem 1.5rem;
+      border-radius: 12px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .edition-meta { flex: 1; min-width: 200px; }
+    .edition-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.4rem; font-weight: 900;
+      margin-bottom: .3rem;
+    }
+    .edition-info {
+      font-size: .88rem; color: var(--mid);
+      line-height: 1.8;
+    }
+    .edition-info span { margin-right: 1.2rem; }
+    .edition-info span::before { content: '📍 '; font-size: .8rem; }
+    .edition-info span.date::before { content: '📅 '; }
+    .edition-info span.kids::before { content: '👦 '; }
+
+    /* ── Stats row ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px var(--shadow);
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 2.2rem; font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .stat-unit { font-size: .75rem; color: var(--mid); margin-left: .1rem; }
+    .stat-label { font-size: .78rem; color: var(--mid); margin-top: .4rem; }
+
+    /* ── Section title ── */
+    .section-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.2rem; font-weight: 900;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 1.2rem;
+      background: var(--orange);
+      border-radius: 3px;
+    }
+
+    /* ── Outcome list ── */
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .outcome-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px var(--shadow);
+      padding: 1.4rem 1.5rem;
+    }
+    .outcome-tag {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      padding: .15rem .6rem;
+      border-radius: 20px;
+      margin-bottom: .6rem;
+      letter-spacing: .5px;
+    }
+    .outcome-tag.quant { background: #FFF3E0; color: var(--orange); }
+    .outcome-tag.qual  { background: var(--blue-l, #E8EFF7); color: var(--blue); }
+    .outcome-card p { font-size: .88rem; color: var(--mid); line-height: 1.75; }
+
+    /* ── Photo grid placeholder ── */
+    .photo-section {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px var(--shadow);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .photo-placeholder {
+      aspect-ratio: 4/3;
+      background: #f0ebe1;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      color: #bbb;
+      font-size: .78rem;
+    }
+    .photo-placeholder .ph-icon { font-size: 2rem; }
+
+    /* ── Coming soon banner ── */
+    .coming-soon {
+      background: linear-gradient(135deg, #FFF3CC, #FFE0A3);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .coming-soon .cs-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .coming-soon h3 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.4rem; font-weight: 900;
+      margin-bottom: .6rem;
+    }
+    .coming-soon p { color: var(--mid); font-size: .93rem; line-height: 1.8; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer p { font-size: .88rem; letter-spacing: 1px; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" style="color:var(--puren-orange); font-weight:700;">回首頁</a>
-    <a href="history.html">緣起沿革</a>
-    <a href="organization.html">組織職掌</a>
-    <a href="members.html">成員</a>
-    <a href="achievements.html">歷年成果</a>
-  </nav>
+<nav>
+  <a href="index.html">回首頁</a>
+  <a href="history.html">緣起沿革</a>
+  <a href="organization.html">組織職掌</a>
+  <a href="members.html">團隊成員</a>
+  <a href="achievements.html" class="active">歷屆成果</a>
+</nav>
 
-  <div class="page-header"><h1 class="page-title">緣起沿革</h1></div>
-  <main class="page-content">
-    <p>請在此輸入基金會或營隊的創立故事、核心理念與發展歷史。</p>
-  </main>
-  <footer><p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p></footer>
+<div class="page-header">
+  <h1 class="page-title">歷屆成果</h1>
+  <p class="page-sub">每一屆的足跡，都是一顆種在孩子心中的光</p>
+</div>
+
+<main class="page-content">
+
+  <!-- Year tabs -->
+  <div class="year-tabs">
+    <button class="year-tab active" onclick="switchEdition('2026', this)">2026 第一屆</button>
+    <!-- 日後新增：<button class="year-tab" onclick="switchEdition('2027', this)">2027 第二屆</button> -->
+  </div>
+
+  <!-- ═══ 2026 第一屆 ═══ -->
+  <div class="edition active" id="ed-2026">
+
+    <div class="edition-header">
+      <div class="edition-badge">第一屆</div>
+      <div class="edition-meta">
+        <div class="edition-name">荳陣來作伙 夏令營</div>
+        <div class="edition-info">
+          <span class="date">2026 年 7 月 28–31 日</span>
+    
+          <span class="kids">服務偏鄉與弱勢學童</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 即將到來 banner -->
+    <div class="coming-soon">
+      <div class="cs-icon">🌟</div>
+      <h3>成果即將揭曉</h3>
+      <p>第一屆夏令營將於 2026 年 7 月 28 日正式展開。<br>成果數據、照片與學員回饋，將在營隊結束後更新於此。</p>
+    </div>
+
+    <!-- 預期成果（先以預期格式呈現） -->
+    <h2 class="section-title" style="margin-bottom:1rem">預期成果指標</h2>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">4<span class="stat-unit">天</span></div>
+        <div class="stat-label">營隊天數</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10<span class="stat-unit">+</span></div>
+        <div class="stat-label">課程與體驗活動</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12<span class="stat-unit">位</span></div>
+        <div class="stat-label">服務志工</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">80<span class="stat-unit">%</span></div>
+        <div class="stat-label">目標學員滿意度</div>
+      </div>
+    </div>
+
+    <!-- 量性 & 質性預期成果 -->
+    <h2 class="section-title" style="margin-top:1.5rem">預期學習成效</h2>
+    <div class="outcome-grid">
+      <div class="outcome-card">
+        <span class="outcome-tag quant">量性指標</span>
+        <p>學員參與度與滿意度大於 80%，學員能表達出自己的情緒，並開始認識自己的情緒與感受。</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-tag quant">量性指標</span>
+        <p>學員透過活動實際體驗團隊合作，完成至少一項手作與科學課程成品。</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-tag qual">質性指標</span>
+        <p>學員對學習新知識不再排斥，能對未來產生更多想像與期待。</p>
+      </div>
+      <div class="outcome-card">
+        <span class="outcome-tag qual">質性指標</span>
+        <p>學員習得可應用於未來的軟實力，包含表達、合作與自我認識。</p>
+      </div>
+    </div>
+
+    <!-- 課程亮點 -->
+    <div class="photo-section">
+      <h2 class="section-title">課程亮點（預覽）</h2>
+      <div class="photo-grid">
+        <div class="photo-placeholder"><span class="ph-icon">🎵</span><span>自製拇指琴 Kalimba</span></div>
+        <div class="photo-placeholder"><span class="ph-icon">🫧</span><span>泡泡魔法師・肥皂課程</span></div>
+        <div class="photo-placeholder"><span class="ph-icon">🖼️</span><span>藍印術・捕捉微光</span></div>
+        <div class="photo-placeholder"><span class="ph-icon">🌊</span><span>水大地遊戲</span></div>
+        <div class="photo-placeholder"><span class="ph-icon">📖</span><span>繪本時間・我的夢想</span></div>
+        <div class="photo-placeholder"><span class="ph-icon">📷</span><span>照片將於活動後更新</span></div>
+      </div>
+    </div>
+
+  </div>
+  <!-- ／2026 -->
+
+</main>
+
+<footer>
+  <p>© 2026 逐光啟程｜荳陣來作伙 夏令營</p>
+</footer>
+
+<script>
+  function switchEdition(year, btn) {
+    document.querySelectorAll('.edition').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.year-tab').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById('ed-' + year);
+    if (target) target.classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
 </body>
 </html>
-<div class="page-header"><h1 class="page-title">歷年成果</h1></div>
-  <main class="page-content">
-    <h3>過去的足跡</h3>
-    <ul>
-      <li>完成偏鄉教育服務人次...</li>
-      <li>相關獲獎或受肯定紀錄...</li>
-    </ul>
-    <p>（未來可在此處嵌入照片或數據圖表）</p>
-  </main>
