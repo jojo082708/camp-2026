@@ -250,11 +250,61 @@
     .info-value small { color:var(--text-light); display:block; font-size:.8rem; font-weight:400; margin-top:.1rem; }
 
     /* FOOTER */
-    footer { background:var(--puren-dark); color:rgba(255,255,255,.55); text-align:center; padding:2.5rem 1rem 2rem; font-size:.85rem; }
-    footer strong { color: var(--puren-orange); }
-    .footer-top { margin-bottom: 1.2rem; display:flex; justify-content:center; align-items:center; gap:.8rem; }
-    .footer-top img { height:44px; filter:brightness(0) invert(1); opacity:.6; }
-    .footer-divider { border:none; border-top:1px solid rgba(255,255,255,.1); margin:1.2rem auto; max-width:400px; }
+    footer {
+      background: var(--puren-dark);
+      color: rgba(255,255,255,.7);
+      font-size: .88rem;
+    }
+    .footer-main {
+      max-width: 960px; margin: 0 auto;
+      padding: 3rem 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .footer-logo-text {
+      font-family: 'Noto Serif TC', serif; font-weight: 900;
+      font-size: 1.15rem; color: var(--puren-orange);
+      display: block; margin-bottom: .5rem;
+    }
+    .footer-tagline { color: rgba(255,255,255,.45); font-size: .82rem; line-height: 1.7; }
+    .footer-section-label {
+      font-weight: 700; letter-spacing: .08em;
+      color: var(--sun); font-size: .78rem;
+      margin-bottom: .8rem; text-transform: uppercase;
+    }
+    .footer-contact p { margin-bottom: .4rem; line-height: 1.7; }
+    .footer-map-link {
+      display: inline-block; margin-top: .4rem;
+      color: var(--sky); text-decoration: none;
+      font-size: .85rem; line-height: 1.6;
+      transition: color .2s;
+    }
+    .footer-map-link:hover { color: #fff; text-decoration: underline; }
+    .footer-socials { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .social-btn {
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.3rem;
+      transition: transform .2s, opacity .2s;
+    }
+    .social-btn:hover { transform: translateY(-3px); opacity: .85; }
+    .social-btn svg { width: 22px; height: 22px; }
+    .social-btn.line { background: #06C755; color: #fff; }
+    .social-btn.ig   { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: #fff; }
+    .social-btn.web  { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); font-size: 1.2rem; }
+    .footer-divider {
+      border: none; border-top: 1px solid rgba(255,255,255,.1);
+      max-width: 960px; margin: 0 auto;
+    }
+    .footer-copy {
+      background: var(--puren-orange);
+      color: rgba(255,255,255,.9);
+      text-align: center; padding: .9rem 1rem;
+      font-size: .82rem;
+    }
+    .footer-copy strong { color: #fff; }
 
     /* REVEAL */
     .reveal { opacity:0; transform:translateY(30px); transition:opacity .6s ease, transform .6s ease; }
@@ -271,6 +321,7 @@
         background: #FFF8EE; border-radius: 8px; margin: .3rem 0;
       }
       .nav-menu > li > span { cursor: pointer; width: 100%; padding: .5rem 0; }
+      .footer-main { grid-template-columns: 1fr; gap: 1.8rem; }
     }
     @media (max-width: 480px) {
       .hero { padding: 3rem 1.2rem 2.5rem; }
@@ -508,13 +559,46 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <img src="#" alt="普仁基金會" onerror="this.style.display='none'" />
-    <span style="color:var(--puren-orange);font-family:'Noto Serif TC',serif;font-weight:900;font-size:1.1rem;">逐光啟程｜荳陣來作伙</span>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <span class="footer-logo-text">逐光啟程｜荳陣來作伙</span>
+      <p class="footer-tagline">讓每一個孩子，都能被光照見 ☀️</p>
+    </div>
+
+    <div class="footer-contact">
+      <div class="footer-section-label">聯絡資訊</div>
+      <p>📞 總召：0963-760-392（龍建治）</p>
+      <p>📞 副召：0902-116-817（莊向賢）</p>
+      <a
+        class="footer-map-link"
+        href="https://maps.google.com/?q=721台南市麻豆區25鄰86號"
+        target="_blank"
+      >
+        📍 721 台南市麻豆區 25 鄰 86 號（台南文正國小）↗
+      </a>
+    </div>
+
+    <div class="footer-social-block">
+      <div class="footer-section-label">追蹤我們</div>
+      <div class="footer-socials">
+        <a href="https://lin.ee/nWMiqPr" target="_blank" class="social-btn line" aria-label="LINE">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        </a>
+        <a href="https://www.instagram.com/beyond__the__light/" target="_blank" class="social-btn ig" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.you-care.org.tw/" target="_blank" class="social-btn web" aria-label="普仁官網">
+          🌐
+        </a>
+      </div>
+    </div>
   </div>
+
   <hr class="footer-divider" />
-  <p>© 2026 <strong>逐光啟程｜荳陣來作伙</strong> 夏令營 &nbsp;｜&nbsp; 財團法人普仁青年關懷基金會 SDGs 計劃</p>
-  <p style="margin-top:.5rem;font-size:.78rem;">讓每一個孩子，都能被光照見 ☀️</p>
+
+  <div class="footer-copy">
+    © 2026 <strong>逐光啟程｜荳陣來作伙</strong> 夏令營 ｜ 財團法人普仁青年關懷基金會 SDGs 計劃
+  </div>
 </footer>
 
 <script>
