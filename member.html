@@ -3,21 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>逐光啟程｜團隊成員</title>
+  <title>團隊成員｜逐光啟程 鬥陣來作伙 2026</title>
+  <meta name="description" content="逐光啟程團隊成員 — 12 位來自全台各大學的志工夥伴，陪伴偏鄉孩子前行。" />
+  <meta name="theme-color" content="#F26522" />
+  <link rel="icon" href="全透明檔.png" type="image/png" />
+  <link rel="canonical" href="https://jojo082708.github.io/camp-2026/member.html" />
+  <meta property="og:title" content="團隊成員｜逐光啟程 鬥陣來作伙 2026" />
+  <meta property="og:description" content="逐光啟程 — 點亮微光，陪伴孩子前行的 12 位夥伴。" />
+  <meta property="og:image" content="https://jojo082708.github.io/camp-2026/全透明檔.png" />
+  <meta property="og:url" content="https://jojo082708.github.io/camp-2026/member.html" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
   <style>
     :root {
-      --orange: #F26522;
-      --dark:   #1A1A1A;
-      --cream:  #FFF8EE;
-      --text:   #2C2416;
-      --mid:    #5A4A2E;
-      --blue:   #6B8CB8;
-      --blue-l: #E8EFF7;
       --white:  #FFFFFF;
       --shadow: rgba(44,36,22,.10);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
@@ -28,18 +32,6 @@
       flex-direction: column;
     }
 
-    /* ── Nav ── */
-    nav {
-      background: rgba(255,255,255,.97);
-      border-bottom: 3px solid var(--orange);
-      padding: .9rem 2rem;
-      display: flex; gap: 1.5rem; align-items: center;
-      position: sticky; top: 0; z-index: 200;
-    }
-    nav a { text-decoration: none; color: var(--text); font-weight: 500; font-size: .95rem; transition: color .25s; }
-    nav a:hover, nav a.active { color: var(--orange); }
-
-    /* ── Page header ── */
     .page-header {
       background: linear-gradient(135deg, #FFF3CC, #FFE0A3);
       padding: 4rem 2rem 3rem;
@@ -52,7 +44,6 @@
     }
     .page-sub { margin-top: .6rem; color: var(--mid); font-size: 1rem; }
 
-    /* ── Wrapper ── */
     .page-content {
       max-width: 1600px;
       margin: 0 auto;
@@ -60,9 +51,7 @@
       flex: 1;
     }
 
-    /* ══════════════════════════════
-       ORG TREE
-    ══════════════════════════════ */
+    /* ORG TREE */
     .org-section { margin-bottom: 4rem; }
     .org-title {
       font-family: 'Noto Serif TC', serif;
@@ -80,13 +69,8 @@
       border-radius: 2px;
     }
 
-    .org-tree {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    .org-tree { display: flex; flex-direction: column; align-items: center; }
 
-    /* ── Each row ── */
     .tree-row {
       display: flex;
       justify-content: center;
@@ -94,14 +78,12 @@
       position: relative;
     }
 
-    /* ── Vertical line between rows ── */
     .v-line {
       width: 2px; height: 40px;
       background: var(--blue);
       opacity: .45;
     }
 
-    /* ── Horizontal branch bar ── */
     .h-branch {
       position: relative;
       display: flex;
@@ -124,7 +106,7 @@
       opacity: .45;
     }
 
-    /* ── Member card ── */
+    /* MEMBER CARD */
     .member-card {
       background: var(--white);
       border-radius: 14px;
@@ -141,7 +123,6 @@
       box-shadow: 0 18px 42px rgba(44,36,22,.18);
     }
 
-    /* photo area – fixed crop */
     .member-photo-wrap {
       position: relative;
       width: 100%;
@@ -169,14 +150,12 @@
 
     .photo-placeholder {
       color: #888;
-      font-size: 2.5rem;
-      font-weight: 900;
+      font-size: 2.5rem; font-weight: 900;
       font-family: monospace;
       letter-spacing: -2px;
       user-select: none;
     }
 
-    /* card text */
     .member-info {
       padding: 1rem 1.1rem 1.2rem;
       flex: 1;
@@ -207,7 +186,6 @@
       margin-bottom: .5rem;
     }
 
-    /* motivation toggle – same style as old exp-toggle */
     .mot-toggle {
       background: none; border: none; cursor: pointer;
       display: flex; align-items: center; gap: .35rem;
@@ -221,19 +199,7 @@
 
     .mot-panel { display: none; margin-top: .5rem; }
     .mot-panel.open { display: block; }
-    .mot-panel p {
-      font-size: .74rem; color: var(--mid);
-      line-height: 1.65;
-    }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--dark);
-      color: rgba(255,255,255,.5);
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    footer p { font-size: .88rem; letter-spacing: 1px; }
+    .mot-panel p { font-size: .74rem; color: var(--mid); line-height: 1.65; }
 
     @media (max-width: 1200px) {
       .member-card { width: 180px; }
@@ -250,11 +216,49 @@
 <body>
 
 <nav>
-  <a href="index.html">回首頁</a>
-  <a href="history.html">緣起沿革</a>
-  <a href="organization.html">組織職掌</a>
-  <a href="member.html" class="active">團隊成員</a>
-  <a href="achievements.html">歷屆成果</a>
+  <a href="index.html" class="nav-logo">
+    <img src="全透明檔.png" alt="普仁青年關懷基金會" onerror="this.style.display='none';" />
+    <div class="nav-logo-fallback">
+      <span class="logo-main">逐光啟程｜鬥陣來作伙</span>
+      <span class="logo-sub">普仁青年關懷基金會 SDGs 計劃</span>
+    </div>
+  </a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-menu" id="navMenu">
+    <li>
+      <span>活動消息 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="news.html">最新消息</a>
+      </div>
+    </li>
+    <li class="active">
+      <span>認識我們 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="history.html">緣起沿革</a>
+        <a href="organization.html">組織職掌</a>
+        <a href="member.html">成員</a>
+        <a href="achievements.html">歷年成果</a>
+      </div>
+    </li>
+    <li>
+      <span>本次營隊 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="index.html#purpose">活動目的</a>
+        <a href="index.html#schedule">活動流程</a>
+        <a href="index.html#courses">課程內容</a>
+        <a href="index.html#games">大地遊戲</a>
+      </div>
+    </li>
+    <li>
+      <span>聯絡我們 <span class="caret">▾</span></span>
+      <div class="dropdown">
+        <a href="https://lin.ee/nWMiqPr" target="_blank" rel="noopener noreferrer">Line客服</a>
+        <a href="https://www.instagram.com/beyond__the__light/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </li>
+  </ul>
 </nav>
 
 <div class="page-header">
@@ -270,7 +274,7 @@
 
       <div class="tree-row">
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/龍王.jpg" alt="龍建治"></div>
+          <div class="member-photo-wrap"><img src="成員照片/龍王.jpg" alt="龍建治" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">龍建治</div>
             <span class="member-role-tag">營隊總召</span>
@@ -287,7 +291,7 @@
 
       <div class="tree-row" id="row2">
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/莊.jpg" alt="莊向賢"></div>
+          <div class="member-photo-wrap"><img src="成員照片/莊.jpg" alt="莊向賢" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">莊向賢</div>
             <span class="member-role-tag">副召兼課程組長</span>
@@ -309,7 +313,7 @@
       <div class="tree-row" id="row3">
 
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/黃.jpg" alt="黃永勳"></div>
+          <div class="member-photo-wrap"><img src="成員照片/黃.jpg" alt="黃永勳" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">黃永勳</div>
             <span class="member-role-tag">營隊統籌</span>
@@ -322,7 +326,7 @@
         </div>
 
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/蔡.jpg" alt="蔡朝欽"></div>
+          <div class="member-photo-wrap"><img src="成員照片/蔡.jpg" alt="蔡朝欽" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">蔡朝欽</div>
             <span class="member-role-tag">統籌兼課程組</span>
@@ -335,7 +339,7 @@
         </div>
 
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/劉.jpg" alt="劉恩綺"></div>
+          <div class="member-photo-wrap"><img src="成員照片/劉.jpg" alt="劉恩綺" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">劉恩綺</div>
             <span class="member-role-tag">統籌組</span>
@@ -361,7 +365,7 @@
       <div class="tree-row" id="row4">
 
         <div class="member-card">
-           <div class="member-photo-wrap"><img src="成員照片/小賴.png" alt="賴宏晏"></div>
+          <div class="member-photo-wrap"><img src="成員照片/小賴.png" alt="賴宏晏" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">賴宏晏</div>
             <span class="member-role-tag">課程組副組長</span>
@@ -374,11 +378,11 @@
         </div>
 
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/林.jpg" alt="林育誠"></div>
+          <div class="member-photo-wrap"><img src="成員照片/林.jpg" alt="林育誠" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">林育誠</div>
             <span class="member-role-tag">課程兼財務組</span>
-             <div class="member-school">台灣科大<br>化學工程系</div>
+            <div class="member-school">台灣科大<br>化學工程系</div>
             <button class="mot-toggle" onclick="toggleMot(this)">加入的緣由</button>
             <div class="mot-panel">
               <p>求學階段雖成績不錯，卻時常不知如何與人建立關係而感到不自在。深知一個溫暖的陪伴對覺得自己被遺忘的孩子有多重要。希望以化工專業與服務熱忱，成為連結知識與學生的橋樑。</p>
@@ -387,7 +391,7 @@
         </div>
 
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/成.jpg" alt="成家榮"></div>
+          <div class="member-photo-wrap"><img src="成員照片/成.jpg" alt="成家榮" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">成家榮</div>
             <span class="member-role-tag">課程組</span>
@@ -400,7 +404,7 @@
         </div>
 
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/牢大.jpg" alt="廖漢翔"></div>
+          <div class="member-photo-wrap"><img src="成員照片/牢大.jpg" alt="廖漢翔" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">廖漢翔</div>
             <span class="member-role-tag">活動組長兼美宣</span>
@@ -426,7 +430,7 @@
         </div>
 
         <div class="member-card">
-          <div class="member-photo-wrap"><img src="成員照片/鍾.jpg" alt="鍾明忠"></div>
+          <div class="member-photo-wrap"><img src="成員照片/鍾.jpg" alt="鍾明忠" loading="lazy" decoding="async"></div>
           <div class="member-info">
             <div class="member-name">鍾明忠</div>
             <span class="member-role-tag">媒體組</span>
@@ -442,40 +446,68 @@
 </main>
 
 <footer>
-  <p>© 2026 逐光啟程｜鬥陣來作伙 夏令營</p>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <span class="footer-logo-text">逐光啟程｜鬥陣來作伙</span>
+      <p class="footer-tagline">讓每一個孩子，都能被光照見 ☀️</p>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-section-label">聯絡資訊</div>
+      <p>📞 總召：0963-760-392（龍建治）</p>
+      <p>📞 副召：0902-116-817（莊向賢）</p>
+      <a class="footer-map-link" href="https://maps.google.com/?q=萬豐國小" target="_blank" rel="noopener noreferrer">
+        📍 萬豐國小 ↗
+      </a>
+    </div>
+    <div class="footer-social-block">
+      <div class="footer-section-label">追蹤我們</div>
+      <div class="footer-socials">
+        <a href="https://lin.ee/nWMiqPr" target="_blank" rel="noopener noreferrer" class="social-btn line" aria-label="LINE">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        </a>
+        <a href="https://www.instagram.com/beyond__the__light/" target="_blank" rel="noopener noreferrer" class="social-btn ig" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.you-care.org.tw/" target="_blank" rel="noopener noreferrer" class="social-btn web" aria-label="普仁官網">🌐</a>
+      </div>
+    </div>
+  </div>
+  <hr class="footer-divider" />
+  <div class="footer-copy">
+    © 2026 <strong>逐光啟程｜鬥陣來作伙</strong> 夏令營 ｜ 財團法人普仁青年關懷基金會 SDGs 計劃
+  </div>
 </footer>
 
+<script src="js/shared.js" defer></script>
 <script>
-  /* ── toggle motivation panel ── */
   function toggleMot(btn) {
     btn.classList.toggle('open');
     btn.nextElementSibling.classList.toggle('open');
   }
 
-  /* ── draw org-chart connector lines ── */
   function drawBranch(hbarId, rowId, dropPrefix) {
-    const hbar  = document.getElementById(hbarId);
-    const row   = document.getElementById(rowId);
+    var hbar  = document.getElementById(hbarId);
+    var row   = document.getElementById(rowId);
     if (!hbar || !row) return;
 
-    const cards = row.querySelectorAll('.member-card');
+    var cards = row.querySelectorAll('.member-card');
     if (cards.length === 0) return;
 
-    const hbarRect = hbar.getBoundingClientRect();
-    const firstRect = cards[0].getBoundingClientRect();
-    const lastRect  = cards[cards.length - 1].getBoundingClientRect();
+    var hbarRect  = hbar.getBoundingClientRect();
+    var firstRect = cards[0].getBoundingClientRect();
+    var lastRect  = cards[cards.length - 1].getBoundingClientRect();
 
-    const leftPx  = firstRect.left + firstRect.width / 2 - hbarRect.left;
-    const rightPx = hbarRect.right - (lastRect.left + lastRect.width / 2);
+    var leftPx  = firstRect.left + firstRect.width / 2 - hbarRect.left;
+    var rightPx = hbarRect.right - (lastRect.left + lastRect.width / 2);
 
     hbar.style.setProperty('--hl', leftPx + 'px');
     hbar.style.setProperty('--hr', rightPx + 'px');
 
-    cards.forEach((card, i) => {
-      const drop = document.getElementById(dropPrefix + i);
+    cards.forEach(function (card, i) {
+      var drop = document.getElementById(dropPrefix + i);
       if (!drop) return;
-      const cardRect = card.getBoundingClientRect();
-      const centerX  = cardRect.left + cardRect.width / 2 - hbarRect.left;
+      var cardRect = card.getBoundingClientRect();
+      var centerX  = cardRect.left + cardRect.width / 2 - hbarRect.left;
       drop.style.left = centerX + 'px';
     });
   }

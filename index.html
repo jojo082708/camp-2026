@@ -4,89 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>逐光啟程｜鬥陣來作伙 夏令營 2026</title>
+  <meta name="description" content="逐光啟程・鬥陣來作伙 2026 夏令營 — 財團法人普仁青年關懷基金會 SDGs 計劃，服務萬豐國小偏鄉學童 40 名。活動期間：2026年7月22–24日。" />
+  <meta name="theme-color" content="#F26522" />
+  <link rel="icon" href="全透明檔.png" type="image/png" />
+  <link rel="canonical" href="https://jojo082708.github.io/camp-2026/" />
+  <meta property="og:title" content="逐光啟程｜鬥陣來作伙 夏令營 2026" />
+  <meta property="og:description" content="財團法人普仁青年關懷基金會 SDGs 計劃。2026年7月22–24日，萬豐國小，服務偏鄉學童 40 名。" />
+  <meta property="og:image" content="https://jojo082708.github.io/camp-2026/全透明檔.png" />
+  <meta property="og:url" content="https://jojo082708.github.io/camp-2026/" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
   <style>
-    :root {
-      --sun: #FFB830;
-      --sky: #4EC3E0;
-      --leaf: #5BBF7A;
-      --peach: #FF8C69;
-      --puren-orange: #F26522;
-      --puren-dark: #1A1A1A;
-      --cream: #FFF8EE;
-      --warm-white: #FFFDF7;
-      --text-dark: #2C2416;
-      --text-mid: #5A4A2E;
-      --text-light: #8A7458;
-      --shadow: rgba(255,184,48,.15);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
-
-
-
-    /* NAV */
-    nav {
-      position: sticky; top: 0; z-index: 200;
-      background: rgba(255,255,255,.97); backdrop-filter: blur(8px);
-      border-bottom: 3px solid var(--puren-orange);
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px; box-shadow: 0 2px 12px rgba(0,0,0,.08);
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: .8rem;
-      text-decoration: none; flex-shrink: 0;
-    }
-    .nav-logo img { height: 52px; width: auto; object-fit: contain; }
-    .nav-logo-fallback {
-      display: flex; flex-direction: column;
-    }
-    .nav-logo-fallback .logo-main {
-      font-family: 'Noto Serif TC', serif; font-weight: 900; font-size: 1rem;
-      color: var(--puren-orange); line-height: 1.2;
-    }
-    .nav-logo-fallback .logo-sub { font-size: .7rem; color: var(--text-light); }
-
-    .nav-menu { display: flex; list-style: none; gap: 0; height: 72px; }
-    .nav-menu > li { position: relative; display: flex; align-items: center; }
-    .nav-menu > li > a,
-    .nav-menu > li > span {
-      display: flex; align-items: center; gap: .3rem;
-      padding: 0 1rem; height: 100%;
-      text-decoration: none; color: var(--text-dark);
-      font-size: .88rem; font-weight: 500; white-space: nowrap; cursor: pointer;
-      transition: color .2s; border-bottom: 3px solid transparent; margin-bottom: -3px;
-    }
-    .nav-menu > li > a:hover,
-    .nav-menu > li:hover > a,
-    .nav-menu > li:hover > span { color: var(--puren-orange); border-bottom-color: var(--puren-orange); }
-    .caret { font-size: .6rem; transition: transform .2s; }
-    .nav-menu > li:hover > span .caret { transform: rotate(180deg); }
-
-    .dropdown {
-      position: absolute; top: 100%; left: 0;
-      background: #fff; border-top: 3px solid var(--puren-orange);
-      border-radius: 0 0 10px 10px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.12);
-      min-width: 160px;
-      opacity: 0; pointer-events: none;
-      transform: translateY(-6px);
-      transition: opacity .2s, transform .2s; z-index: 300;
-    }
-    .nav-menu > li:hover .dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    .dropdown a {
-      display: block; padding: .7rem 1.2rem;
-      font-size: .85rem; color: var(--text-mid);
-      text-decoration: none; white-space: nowrap;
-      border-left: 3px solid transparent;
-      transition: background .15s, color .15s, border-color .15s;
-    }
-    .dropdown a:hover { background: #FFF3E8; color: var(--puren-orange); border-left-color: var(--puren-orange); }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .5rem; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-dark); border-radius: 2px; }
 
     /* HERO */
     .hero {
@@ -201,16 +133,14 @@
       transition: transform .25s, box-shadow .25s; position: relative; overflow: hidden;
     }
     .course-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(255,184,48,.25); }
-    .course-card:nth-child(1)  { border-top-color: var(--puren-orange); }
-    .course-card:nth-child(2)  { border-top-color: var(--sky); }
-    .course-card:nth-child(3)  { border-top-color: var(--leaf); }
-    .course-card:nth-child(4)  { border-top-color: var(--peach); }
-    .course-card:nth-child(5)  { border-top-color: #B388FF; }
-    .course-card:nth-child(6)  { border-top-color: #4DB6AC; }
-    .course-card:nth-child(7)  { border-top-color: var(--sun); }
-    .course-card:nth-child(8)  { border-top-color: var(--sky); }
-    .course-card:nth-child(9)  { border-top-color: var(--leaf); }
-    .course-card:nth-child(10) { border-top-color: var(--puren-orange); }
+    .course-card:nth-child(1) { border-top-color: var(--puren-orange); }
+    .course-card:nth-child(2) { border-top-color: var(--sky); }
+    .course-card:nth-child(3) { border-top-color: var(--leaf); }
+    .course-card:nth-child(4) { border-top-color: var(--peach); }
+    .course-card:nth-child(5) { border-top-color: #B388FF; }
+    .course-card:nth-child(6) { border-top-color: #4DB6AC; }
+    .course-card:nth-child(7) { border-top-color: var(--sun); }
+    .course-card:nth-child(8) { border-top-color: var(--sky); }
     .course-number { position:absolute; top:1rem; right:1.2rem; font-family:'Noto Serif TC',serif; font-weight:900; font-size:2.5rem; color:rgba(0,0,0,.05); line-height:1; }
     .course-emoji { font-size: 2rem; margin-bottom: .6rem; }
     .course-card h3 { font-family:'Noto Serif TC',serif; font-weight:700; font-size:1.05rem; color:var(--text-dark); margin-bottom:.6rem; }
@@ -230,9 +160,6 @@
     .game-emoji { font-size: 2.2rem; margin-bottom: .6rem; }
     .game-card h3 { font-family:'Noto Serif TC',serif; font-weight:700; font-size:1.05rem; color:var(--text-dark); margin-bottom:.6rem; }
     .game-card p  { font-size:.88rem; line-height:1.75; color:var(--text-light); }
-    .game-bullets { margin-top:.8rem; list-style:none; }
-    .game-bullets li { font-size:.83rem; color:var(--text-mid); padding:.2rem 0; display:flex; align-items:flex-start; gap:.4rem; }
-    .game-bullets li::before { content:'▸'; color:var(--sky); flex-shrink:0; }
 
     /* INFO */
     .info-section { background: var(--cream); }
@@ -242,96 +169,14 @@
     .info-value { font-size:.95rem; color:var(--text-dark); font-weight:500; }
     .info-value small { color:var(--text-light); display:block; font-size:.8rem; font-weight:400; margin-top:.1rem; }
 
-    /* FOOTER */
-    footer {
-      background: var(--puren-dark);
-      color: rgba(255,255,255,.7);
-      font-size: .88rem;
-    }
-    .footer-main {
-      max-width: 960px; margin: 0 auto;
-      padding: 3rem 1.5rem 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2.5rem;
-      align-items: start;
-    }
-    .footer-logo-text {
-      font-family: 'Noto Serif TC', serif; font-weight: 900;
-      font-size: 1.15rem; color: var(--puren-orange);
-      display: block; margin-bottom: .5rem;
-    }
-    .footer-tagline { color: rgba(255,255,255,.45); font-size: .82rem; line-height: 1.7; }
-    .footer-section-label {
-      font-weight: 700; letter-spacing: .08em;
-      color: var(--sun); font-size: .78rem;
-      margin-bottom: .8rem; text-transform: uppercase;
-    }
-    .footer-contact p { margin-bottom: .4rem; line-height: 1.7; }
-    .footer-map-link {
-      display: inline-block; margin-top: .4rem;
-      color: var(--sky); text-decoration: none;
-      font-size: .85rem; line-height: 1.6;
-      transition: color .2s;
-    }
-    .footer-map-link:hover { color: #fff; text-decoration: underline; }
-    .footer-socials { display: flex; gap: .8rem; flex-wrap: wrap; }
-    .social-btn {
-      width: 42px; height: 42px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none; font-size: 1.3rem;
-      transition: transform .2s, opacity .2s;
-    }
-    .social-btn:hover { transform: translateY(-3px); opacity: .85; }
-    .social-btn svg { width: 22px; height: 22px; }
-    .social-btn.line { background: #06C755; color: #fff; }
-    .social-btn.ig   { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: #fff; }
-    .social-btn.web  { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); font-size: 1.2rem; }
-    .footer-divider {
-      border: none; border-top: 1px solid rgba(255,255,255,.1);
-      max-width: 960px; margin: 0 auto;
-    }
-    .footer-copy {
-      background: var(--puren-orange);
-      color: rgba(255,255,255,.9);
-      text-align: center; padding: .9rem 1rem;
-      font-size: .82rem;
-    }
-    .footer-copy strong { color: #fff; }
-
-    /* REVEAL */
-    .reveal { opacity:0; transform:translateY(30px); transition:opacity .6s ease, transform .6s ease; }
-    .reveal.visible { opacity:1; transform:none; }
-
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .nav-menu { display: none; }
-      .hamburger { display: flex; }
-      .top-bar { display: none; }
-      .nav-menu > li.open > .dropdown {
-        opacity: 1; pointer-events: auto; transform: translateY(0);
-        position: static; box-shadow: none;
-        background: #FFF8EE; border-radius: 8px; margin: .3rem 0;
-      }
-      .nav-menu > li > span { cursor: pointer; width: 100%; padding: .5rem 0; }
-      .footer-main { grid-template-columns: 1fr; gap: 1.8rem; }
-    }
-    @media (max-width: 480px) {
-      .hero { padding: 3rem 1.2rem 2.5rem; }
-    }
-
-    /* ===== LOGO INTRO OVERLAY ===== */
+    /* LOGO INTRO OVERLAY */
     #logo-intro {
       position: fixed; inset: 0; z-index: 9999;
       background: #FFF8EE;
       display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      pointer-events: all;
+      overflow: hidden; pointer-events: all;
     }
-    #logo-intro.done {
-      animation: intro-fade-out 0.5s ease forwards;
-      pointer-events: none;
-    }
+    #logo-intro.done { animation: intro-fade-out 0.5s ease forwards; pointer-events: none; }
     @keyframes intro-fade-out { to { opacity: 0; visibility: hidden; } }
     #logo-intro .intro-logo {
       width: min(360px, 65vw);
@@ -345,18 +190,20 @@
       100% { transform: translateX(130vw)  rotate(4deg)  scale(0.9); opacity: 0; }
     }
     #logo-intro::after {
-      content: "";
-      position: absolute; top: 0; left: -60%;
+      content: ""; position: absolute; top: 0; left: -60%;
       width: 35%; height: 100%;
       background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%);
-      animation: streak 2s ease forwards;
-      pointer-events: none;
+      animation: streak 2s ease forwards; pointer-events: none;
     }
     @keyframes streak {
       0%   { transform: translateX(-10%); opacity: 0; }
       25%  { opacity: 1; }
       75%  { opacity: 1; }
       100% { transform: translateX(320%); opacity: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 3rem 1.2rem 2.5rem; }
     }
   </style>
 </head>
@@ -366,21 +213,15 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <img
-      src="全透明檔.png"
-      alt="普仁青年關懷基金會"
-      onerror="this.style.display='none';"
-    />
+    <img src="全透明檔.png" alt="普仁青年關懷基金會" onerror="this.style.display='none';" />
     <div class="nav-logo-fallback">
       <span class="logo-main">逐光啟程｜鬥陣來作伙</span>
       <span class="logo-sub">普仁青年關懷基金會 SDGs 計劃</span>
     </div>
   </a>
-
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
-
   <ul class="nav-menu" id="navMenu">
     <li>
       <span>活動消息 <span class="caret">▾</span></span>
@@ -391,10 +232,10 @@
     <li>
       <span>認識我們 <span class="caret">▾</span></span>
       <div class="dropdown">
-        <a href="history.html" style="margin:0 10px;">緣起沿革</a>
-        <a href="organization.html" style="margin:0 10px;">組織職掌</a>
-        <a href="member.html" style="margin:0 10px;">成員</a>
-        <a href="achievements.html" style="margin:0 10px;">歷年成果</a>
+        <a href="history.html">緣起沿革</a>
+        <a href="organization.html">組織職掌</a>
+        <a href="member.html">成員</a>
+        <a href="achievements.html">歷年成果</a>
       </div>
     </li>
     <li>
@@ -407,18 +248,10 @@
       </div>
     </li>
     <li>
-      <span>支持我們 <span class="caret">▾</span></span>
-      <div class="dropdown">
-        <a href="#" target="_blank">捐款方式</a>
-        <a href="#">線上捐款</a>
-        <a href="#">捐贈發票</a>
-      </div>
-    </li>
-    <li>
       <span>聯絡我們 <span class="caret">▾</span></span>
       <div class="dropdown">
-        <a href="https://lin.ee/nWMiqPr" target="_blank">Line客服</a>
-        <a href="https://www.instagram.com/beyond__the__light/" target="_blank">instagram</a>
+        <a href="https://lin.ee/nWMiqPr" target="_blank" rel="noopener noreferrer">Line客服</a>
+        <a href="https://www.instagram.com/beyond__the__light/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </li>
   </ul>
@@ -594,86 +427,46 @@
       <span class="footer-logo-text">逐光啟程｜鬥陣來作伙</span>
       <p class="footer-tagline">讓每一個孩子，都能被光照見 ☀️</p>
     </div>
-
     <div class="footer-contact">
       <div class="footer-section-label">聯絡資訊</div>
       <p>📞 總召：0963-760-392（龍建治）</p>
       <p>📞 副召：0902-116-817（莊向賢）</p>
-      <a
-        class="footer-map-link"
-        href="https://maps.google.com/?q=萬豐國小"
-        target="_blank"
-      >
+      <a class="footer-map-link" href="https://maps.google.com/?q=萬豐國小" target="_blank" rel="noopener noreferrer">
         📍 萬豐國小 ↗
       </a>
     </div>
-
     <div class="footer-social-block">
       <div class="footer-section-label">追蹤我們</div>
       <div class="footer-socials">
-        <a href="https://lin.ee/nWMiqPr" target="_blank" class="social-btn line" aria-label="LINE">
+        <a href="https://lin.ee/nWMiqPr" target="_blank" rel="noopener noreferrer" class="social-btn line" aria-label="LINE">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
         </a>
-        <a href="https://www.instagram.com/beyond__the__light/" target="_blank" class="social-btn ig" aria-label="Instagram">
+        <a href="https://www.instagram.com/beyond__the__light/" target="_blank" rel="noopener noreferrer" class="social-btn ig" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         </a>
-        <a href="https://www.you-care.org.tw/" target="_blank" class="social-btn web" aria-label="普仁官網">
-          🌐
-        </a>
+        <a href="https://www.you-care.org.tw/" target="_blank" rel="noopener noreferrer" class="social-btn web" aria-label="普仁官網">🌐</a>
       </div>
     </div>
   </div>
-
   <hr class="footer-divider" />
-
   <div class="footer-copy">
     © 2026 <strong>逐光啟程｜鬥陣來作伙</strong> 夏令營 ｜ 財團法人普仁青年關懷基金會 SDGs 計劃
   </div>
 </footer>
 
+<script src="js/shared.js" defer></script>
 <script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Mobile hamburger
-  let menuOpen = false;
-  function toggleMenu() {
-    const menu = document.getElementById('navMenu');
-    menuOpen = !menuOpen;
-    if (menuOpen) {
-      Object.assign(menu.style, {
-        display:'flex', flexDirection:'column', position:'absolute',
-        top:'72px', left:'0', right:'0', background:'#fff',
-        padding:'1rem', borderBottom:'3px solid #F26522',
-        boxShadow:'0 8px 24px rgba(0,0,0,.1)', height:'auto', zIndex:'300'
-      });
-    } else {
-      menu.style.display = 'none';
-      document.querySelectorAll('.nav-menu > li').forEach(li => li.classList.remove('open'));
-    }
-  }
-
-  // Mobile dropdown toggle
-  document.querySelectorAll('.nav-menu > li > span').forEach(span => {
-    span.addEventListener('click', function(e) {
-      if (window.innerWidth > 768) return;
-      const li = this.closest('li');
-      const isOpen = li.classList.contains('open');
-      document.querySelectorAll('.nav-menu > li').forEach(el => el.classList.remove('open'));
-      if (!isOpen) li.classList.add('open');
-    });
-  });
-</script>
-<script>
-  (function(){
-    var overlay = document.getElementById("logo-intro");
+  (function () {
+    var overlay = document.getElementById('logo-intro');
     if (!overlay) return;
-    setTimeout(function() {
-      overlay.classList.add("done");
-      setTimeout(function(){ overlay.remove(); }, 500);
+    if (sessionStorage.getItem('introShown')) {
+      overlay.style.display = 'none';
+      return;
+    }
+    sessionStorage.setItem('introShown', '1');
+    setTimeout(function () {
+      overlay.classList.add('done');
+      setTimeout(function () { overlay.remove(); }, 500);
     }, 2100);
   })();
 </script>
