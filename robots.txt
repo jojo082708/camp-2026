@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jojo082708.github.io/camp-2026/sitemap.xml
